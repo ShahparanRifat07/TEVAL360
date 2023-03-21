@@ -21,6 +21,44 @@
 <body>
     <div class="contain-register">
         <div class="card">
+            <div class="card-body  form-padding">
+                <div class="signin-form-header">
+                    <p>Don't have an evaluation system? Don't worry register here...</p>
+                </div>
+                <hr>
+                <form method="POST" action="{% url 'stakeholder:register' %}">
+                    {% csrf_token %}
+
+
+
+                    <div class="row mb-4">
+
+                        <div class="col-6 mb-3">
+                            <label class="form-label" >Full Name <span class="star-color">*</span></label>
+                            <input type="text" name="fullname" class="form-control" placeholder="Enter Your Full Name" required/>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label class="form-label" >Email <span class="star-color">*</span></label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required/>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label class="form-label" >Username <span class="star-color">*</span></label>
+                            <input type="text" name="username" class="form-control" placeholder="Enter Your Username" required/>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label class="form-label" >Password <span class="star-color">*</span></label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter Your Password" required/>
+                        </div>
+                    </div>
+
+                    <div class="student-submit">
+                        <button type="submit" data-mdb-ripple-duration="0" class="btn btn-primary btn-block">Submit</button>
+                    </div>
+                </form>
+            </div>
             
 
 
