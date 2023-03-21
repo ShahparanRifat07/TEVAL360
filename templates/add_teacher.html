@@ -9,8 +9,169 @@
 
 
 
+    <h1 class="title">Add Teachers</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="teacher_list.html">Teachers</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Add Teacher</a></li>
+    </ul>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Teacher Information</h4>
+                <a href="" class="btn btn-success"><i class="fa-solid fa-file-excel icon"></i> Add Teachers Using
+                    XLS</a>
+            </div>
+            <hr>
+            <div class="add-student-form">
+                <form action="{% url 'stakeholder:add-teacher' %}" method="POST">
+                    {% csrf_token %}
+                    <h5 class="text-dark mb-4">Basic Details:</h5>
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <label  class="form-label text-dark">First Name</label>
+                            <div class="form-outline">
+                                <input type="text" name="first_name" class="form-control" placeholder="Enter First Name"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Last Name</label>
+                            <div class="form-outline">
+                                <input type="text" name="last_name"  class="form-control" placeholder="Enter Last Name"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Teacher ID</label>
+                            <div class="form-outline">
+                                <input type="text" name="teacher_id" class="form-control" placeholder="Enter Teacher ID"/>
+                            </div>
+                        </div>
+                    </div>
 
 
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Designation</label>
+                            <div class="form-outline">
+                                <input type="text" name="designation" class="form-control" placeholder="Enter Designation"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Joining Date</label>
+                            <div class="form-outline">
+                                <input type="date" name="joining_date" class="form-control" placeholder="MM-DD-YYYY"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Gender</label>
+                            <select name="gender" class="form-select form-select" aria-label=".form-select-sm example">
+                                <option selected disabled>Select Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Date of Birth</label>
+                            <div class="form-outline">
+                                <input type="date" name="dob" class="form-control" placeholder="MM-DD-YYYY"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Phone Number</label>
+                            <div class="form-outline">
+                                <input type="text" name="phone"  class="form-control" placeholder="Enter Phone Number"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Department</label>
+                            <select name="department" class="form-select form-select" aria-label=".form-select-sm example">
+                                <option selected disabled>Select Department</option>
+                                {% for department in departments %}
+                                <option value="{{department.id}}">{{department.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4">
+                        <h5 class="text-dark mb-4 mt-4">Login Details:</h5>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Username</label>
+                            <div class="form-outline">
+                                <input type="text" name="username"  class="form-control" placeholder="Enter Username"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Email</label>
+                            <div class="form-outline">
+                                <input type="email" name="email" class="form-control" placeholder="Enter Email Address"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Password</label>
+                            <div class="form-outline">
+                                <input type="password" name="password"  class="form-control" placeholder="Enter Password"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4">
+                        <h5 class="text-dark mb-4 mt-4">Address:</h5>
+                        <div class="col-12">
+                            <label  class="form-label text-dark">Address</label>
+                            <div class="form-outline">
+                                <input type="text" name="address" class="form-control" placeholder="Enter Address"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4">
+                        <div class="col-4">
+                            <label  class="form-label text-dark">City</label>
+                            <div class="form-outline">
+                                <input type="text" name="city" class="form-control" placeholder="Enter City"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">State</label>
+                            <div class="form-outline">
+                                <input type="text" name="state"  class="form-control" placeholder="Enter State"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label  class="form-label text-dark">Zipcode</label>
+                            <div class="form-outline">
+                                <input type="text" name="zipcode" class="form-control" placeholder="Enter Zipcode"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Submit button -->
+                    <div class="student-submit">
+                        <button type="submit" data-mdb-ripple-duration="0"
+                            class="btn btn-primary btn-block mb-4 mt-4">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 
