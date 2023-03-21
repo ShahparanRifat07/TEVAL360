@@ -112,6 +112,47 @@
         </section>
         <!-- SIDEBAR -->
 
+
+            <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class="bx bx-menu toggle-sidebar"></i>
+            <form action="">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" />
+                    <i class="bx bx-search-alt-2 icon"></i>
+                </div>
+            </form>
+            <a href="#" class="nav-link">
+                <i class="bx bxs-bell icon"></i>
+                <span class="badge">5</span>
+            </a>
+
+            <span class="divider"></span>
+            <div class="profile">
+                <img src="https://www.leisureopportunities.co.uk/images/995586_746594.jpg" alt="" />
+                <ul class="profile-link">
+                    <li>
+                        <a href=""><i class="bx bxs-user-circle icon"></i>Profile</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="bx bxs-user-circle icon"></i>Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'stakeholder:logout' %}"><i class="bx bxs-user-circle icon"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        {% block content %}
+        {% endblock %}
+
+    </section>
+
+    <!-- NAVBAR -->
+
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
