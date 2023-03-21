@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Teachers</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Teachers</a></li>
+    </ul>
+
+
+    <div class="search-list mst-4">
+        <form action="" method="POST">
+            <div class="row mb-4">
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example1" class="form-control" placeholder="Search by ID ..." />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Name ..." />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Phone ..." />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <!-- Submit button -->
+                    <!-- <div class="student-submit"> -->
+                    <a href="" type="submit" class="btn btn-primary bg-color-purple"><i
+                            class="fa-solid fa-magnifying-glass"></i></a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </form>
+        <!-- 3 column grid layout with text inputs for the first and last names -->
+    </div>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Teachers</h4>
+
+                <div>
+                    <a href="" class="btn btn-primary bg-color-purple"><i class="fa-solid fa-download"></i>
+                        Download</a>
+                    <a href="add_teacher.html" class="btn btn-primary ms-2 bg-color-purple"><i
+                            class="fa-solid fa-plus"></i></a>
+                </div>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Teacher ID</th>
+                            <th>Designation</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                        {% for teacher in teachers%}
+                        <tr>
+                            <td>1</td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="/media/{{teacher.image}}" alt="{{teacher.first_name}} {{teacher.last_name}}"
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <a href="" class="fw-bold mb-1">{{teacher.first_name}} {{teacher.last_name}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{teacher.teacher_id}}</td>
+                            <td>{{teacher.designation}}</td>
+                            <td>
+                                <p class="fw-normal mb-1">{{teacher.email}}</p>
+                            </td>
+                            <td>
+                                {{teacher.phone}}
+                            </td>
+                            <td>{{teacher.department.name}}</td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="" class="btn btn-rounded bg-danger text-white"><i
+                                        class="fa-regular fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+
+
+                    </tbody>
+                </table>
+
+                <div class="mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
