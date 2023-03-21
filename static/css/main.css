@@ -447,3 +447,97 @@ main .chart-data .card {
 }
 
 /* ADD STUDENT */
+
+
+
+/* Excel Add Student */
+#dropzone {
+    font-family: monospace;
+    margin: auto;
+    position: relative;
+    top: 30px;
+    border: 2px dashed #CCC;
+    border-radius: 5px;
+    color: #CCC;
+    height: 100px;
+    width: 60vw;
+    text-align: center;
+}
+
+#dropzone.dragover {
+    border: 2px dashed #000;
+    color: #ccc;
+}
+
+#dropzone.dropped {
+    border: 2px dashed #1ABC9C;
+    color: #1ABC9C;
+}
+
+#dropzone div {
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+#dropzone div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#dropzone [type="file"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.pdf,
+.img {
+    font-size: 12px;
+    border-radius: 5px;
+    z-index: 1;
+    height: 40px;
+    width: 40px;
+    margin: 2px;
+    background-color: #EF4836;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+.fileerr {
+    color: #D24D57;
+    float: clear;
+    text-align: center;
+}
+
+.fileok,
+.filesize {
+    text-align: center;
+    line-height: 15px !important;
+    color: #3B7E87;
+    font-size: 16px !important;
+    word-break: break-all;
+    color: #3B7E87;
+}
+
+.filesize {
+    font-size: 14px !important;
+    color: #1F3A93;
+}
+
+/* Excel Add Student */
