@@ -1,0 +1,162 @@
+
+html {
+    height: 100%
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple: #03A9F4;
+    --gray: #F7F8FC;
+    --dark-gray: #757575;
+    --white: #ffffff;
+    --dark: #000;
+    --light-dark: #272C33;
+    --red: #D32F2F;
+    --light-red: #F44336;
+}
+
+body {
+    background-color: var(--gray);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+.bg-color-purple {
+    background: var(--purple);
+}
+
+.bg-color-purple-text-white {
+    background: var(--purple);
+    color: var(--white);
+}
+
+.star-color{
+    color: var(--red);
+}
+
+
+/* SIDEBAR */
+
+
+
+#sidebar {
+    position: fixed;
+    max-width: 260px;
+    width: 100%;
+    background: var(--white);
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    transition: all .3s ease;
+    z-index: 200;
+}
+
+
+.hide {
+    max-width: 60px !important;
+}
+
+.hide:hover {
+    max-width: 260px !important;
+}
+
+
+#sidebar ::-webkit-scrollbar {
+    display: none;
+}
+
+
+#sidebar .icon {
+    min-width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: var(--white); */
+    margin-right: 6px;
+}
+
+#sidebar .icon-right {
+    margin-left: auto;
+    transition: all .3s ease;
+}
+
+
+
+#sidebar .side-menu {
+    margin: 36px 0;
+    padding: 0 20px;
+    transition: all .3s ease;
+}
+
+
+.hide .side-menu {
+    padding: 0 6px !important;
+}
+
+.hide:hover .side-menu {
+    padding: 0 20px;
+}
+
+
+
+
+#sidebar .side-menu a {
+    display: flex;
+    align-items: center;
+    color: var(--light-dark);
+    font-size: 14px;
+    padding: 12px 16px 12px 0;
+    transition: all .3s ease;
+    border-radius: 10px;
+    margin: 4px 0;
+    white-space: nowrap;
+    /* grid-gap: 6px; */
+}
+
+
+#sidebar .side-menu>li>a:hover {
+    background: var(--purple);
+}
+
+#sidebar .side-menu>li>a.active .icon-right {
+    transform: rotateZ(90deg);
+}
+
+#sidebar .side-menu>li>a.active,
+#sidebar .side-menu>li>a.active:hover {
+    background: var(--purple);
+}
+
+
+#sidebar .side-dropdown {
+    padding-left: 48px;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all .15s ease;
+}
+
+#sidebar .side-dropdown.show {
+    max-height: 1000px;
+}
+
+#sidebar .side-dropdown a:hover {
+    color: var(--purple);
+}
+
+
+
+/* SIDEBAR */
