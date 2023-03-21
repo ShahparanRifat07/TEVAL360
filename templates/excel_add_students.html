@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Add Students</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="student_list.html">Students</a></li>
+        <li class="divider">/</li>
+        <li><a href="add_student.html">Add Student</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Add Student Using Excel</a></li>
+    </ul>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Add Student Using Excel</h4>
+            </div>
+            <hr>
+
+            <div class="card add-student-excel-download">
+                <h6> <a href="">Click here</a> to Download the <span class="text-success"><i
+                            class="fa-solid fa-file-excel icon"></i> Excel Template</span> & fill up to insert
+                    students.
+                </h6>
+            </div>
+            <div class="add-student-form">
+                <form action="{% url 'stakeholder:add-student-excel' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div>
+                        <label for="formFileLg" class="form-label">Upload Your Excel File</label>
+                        <input name="file" type="file" class="form-control form-control-lg" accept="xlsx/*, application/xlsx" id="formFileLg" type="file">
+                      </div>
+
+
+                    <!-- Submit button -->
+                    <div class="student-submit">
+                        <button type="submit" data-mdb-ripple-duration="0"
+                            class="btn btn-primary btn-block mb-4 mt-4">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}
