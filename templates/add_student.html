@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<!-- MAIN -->
+{% block content %}
+<main>
+    <h1 class="title">Add Students</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="student_list.html">Students</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Add Student</a></li>
+    </ul>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Student Information</h4>
+                <a href="{% url 'stakeholder:add-student-excel' %}" class="btn btn-success"><i class="fa-solid fa-file-excel icon"></i>
+                    Add Studnts Using
+                    XLS</a>
+            </div>
+            <hr>
+        </div>
+    </div>
+</main>
+<!-- MAIN -->
+{% endblock %}
