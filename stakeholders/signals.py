@@ -1,6 +1,6 @@
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
-from stakeholder.models import Institution, Student, Parent,Teacher
+from stakeholders.models import Institution, Student, Parent,Teacher
 from evaluation.models import StakeholderTag,InstitutionTag,Factor,Question
 from django.contrib.auth.models import User
 from nameparser import HumanName
