@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Students</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Students</a></li>
+    </ul>
+
+
+    <div class="search-list mst-4">
+        <form action="" method="POST">
+            <div class="row mb-4">
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example1" class="form-control" placeholder="Search by ID ..." />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Name ..." />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Phone ..." />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <!-- Submit button -->
+                    <!-- <div class="student-submit"> -->
+                    <a href="" type="submit" class="btn btn-primary bg-color-purple"><i
+                            class="fa-solid fa-magnifying-glass"></i></a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </form>
+        <!-- 3 column grid layout with text inputs for the first and last names -->
+    </div>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Students</h4>
+
+                <div>
+                    <a href="" class="btn btn-primary bg-color-purple"><i class="fa-solid fa-download"></i>
+                        Download</a>
+                    <a href="{% url 'stakeholder:add-student' %}" class="btn btn-primary ms-2 bg-color-purple"><i
+                            class="fa-solid fa-plus"></i></a>
+                </div>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Stuent ID</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for student in students  %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="/media/{{student.image}}" alt=""
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <a href="" class="fw-bold mb-1">{{student.first_name}} {{student.last_name}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{student.student_id}}</td>
+                            <td>
+                                <p class="fw-normal mb-1">{{student.email}}</p>
+                            </td>
+                            <td>
+                                {{student.phone_number}}
+                            </td>
+                            <td>{{student.department.name}}</td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="" class="btn btn-rounded bg-danger text-white"><i
+                                        class="fa-regular fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                            
+
+
+
+                    </tbody>
+                </table>
+
+                <div class="mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}
