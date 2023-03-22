@@ -112,3 +112,103 @@ def user_logout(request):
     logout(request)
     return redirect('stakeholder:login')
 
+
+
+def add_student(request):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user)
+        if institution:
+            institution_admin = institution[0].institution_admin
+            if request.method == 'POST':
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                student_id = request.POST.get('student_id')
+                father_name = request.POST.get('father_name')
+                mother_name = request.POST.get('mother_name')
+                gender = request.POST.get('gender')
+                dob = request.POST.get('dob')
+                phone = request.POST.get('phone')
+                department = request.POST.get('department')
+                student_username = request.POST.get('student_username')
+                email = request.POST.get('email')
+                student_password = request.POST.get('student_password')
+                parent_username = request.POST.get('parent_username')
+                parent_phone = request.POST.get('parent_phone')
+                parent_password = request.POST.get('parent_password')
+                address = request.POST.get('address')
+                city = request.POST.get('city')
+                state = request.POST.get('state')
+                zipcode = request.POST.get('zipcode')
+
+
+                dept = Department.objects.get(id=department)
+                student = Student(first_name = first_name,last_name = last_name,student_id = student_id,father_name=father_name,
+                                    mother_name = mother_name, gender = gender,dob=dob,phone_number = phone,email = email,
+                                    address = address,city=city,state=state,zipcode=zipcode,institution= institution[0],department = dept)
+                
+
+                student._student_username = student_username
+                student._student_password = student_password
+                student._parent_username = parent_username
+                student._parent_phone_number = parent_phone
+                student._parent_password = parent_password
+
+                student.save()
+
+                return redirect('stakeholder:student-list')
+            if request.method == 'GET':
+                departments = Department.objects.filter(institution = institution[0])
+                context = {
+                    'departments' : departments,
+                    'admin' : institution[0].institution_admin,
+                }
+                return render(request,'add_student.html',context)
+        else:
+            return HttpResponse("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
+    
+
+
+def add_student_excel(request):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user)
+        if institution:
+            institution_admin = institution[0].institution_admin
+            if request.method == 'POST':
+                student_resource = StudentResource()
+                dataset = Dataset()
+                new_student = request.FILES['file']
+
+                if not new_student.name.endswith('xlsx'):
+                    return HttpResponse("Wrong Format")
+                
+                imported_data = dataset.load(new_student.read(),format='xlsx')
+                for data in imported_data:
+                    # try:
+                        depart = Department.objects.get(id=data[13],institution=institution[0])
+                        student = Student(first_name = data[1],last_name = data[2],student_id =data[3],father_name=data[4],mother_name=data[5],
+                                        gender=data[6],dob=data[7],phone_number=str(data[8]),address=data[9],city=data[10],state=data[11],zipcode=str(data[12]),
+                                        department = depart,email=data[14],institution = institution[0])
+
+                        student._student_username = data[15]
+                        student._student_password = str(data[16])
+                        student._parent_username = data[17]
+                        student._parent_phone_number = str(data[18])
+                        student._parent_password = str(data[19])
+
+                        student.save()
+                    # except:
+                    #     print("print a messege-->add_student_excel")
+                
+                return render(request,'excel_add_students.html')
+
+            if request.method == 'GET':
+                context = {
+                    'admin' : institution[0].institution_admin,
+                }
+                return render(request,'excel_add_students.html',context)
+        else:
+            return HttpResponse("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
