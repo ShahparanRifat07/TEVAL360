@@ -541,3 +541,470 @@ main .chart-data .card {
 }
 
 /* Excel Add Student */
+
+
+
+/*ADD Administrative Role*/
+
+.permission-checkbox input {
+    padding: 0;
+    margin: 0 !important;
+}
+
+/*ADD Administrative Role*/
+
+
+
+/* Student List  */
+.student-list-edit:hover {
+    background-color: var(--purple) !important;
+    color: var(--white) !important;
+}
+
+/* Student List  */
+
+
+/* Factor List */
+
+.factor-list .card {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-bottom: 15px;
+}
+
+.factor-list-head {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+}
+
+.factor-head-mr-auto {
+    display: flex;
+    justify-content: space-between;
+}
+
+.factor-actions a {
+    color: var(--white) !important;
+}
+
+/* Factor List */
+
+
+/* Create Evaluation */
+
+.create-evaluation .card {
+    padding: 30px;
+}
+
+.create-evaluation-head {
+    margin: auto;
+}
+
+.create-evaluation-form {
+    padding: 15px;
+}
+
+.student-factors {
+    opacity: 0;
+    pointer-events: hidden;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.teacher-factors {
+    opacity: 0;
+    pointer-events: hidden;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.parent-factors {
+    opacity: 0;
+    pointer-events: hidden;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+
+.self-factors {
+    opacity: 0;
+    pointer-events: hidden;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+
+.adminstrator-factors {
+    opacity: 0;
+    pointer-events: hidden;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.evaluation-form-div-show {
+    display: flex;
+    opacity: 1;
+    transition: all 0.5s ease;
+    pointer-events: visible;
+}
+
+/* Create Evaluation */
+
+
+/* Evaluation Form */
+
+.evaluation .card {
+    padding: 30px;
+}
+
+.evaluation-head {
+    margin: auto;
+}
+
+.evaluation-course-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.evaluation-course-details p {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    color: var(--purple);
+}
+
+.evaluation-course-details span {
+    font-weight: 500;
+    color: var(--light-dark);
+}
+
+.stakeholder-evaluation-form {
+    min-width: 350px;
+}
+
+.stakeholder-evaluation-form .evaluation-question {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.stakeholder-evaluation-form .evaluation-question p {
+    font-size: larger;
+    color: var(--dark);
+}
+
+.stakeholder-evaluation-form .evaluation-question p span {
+    font-weight: 500;
+}
+
+.evaluation-form-message {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+
+.evaluation-form-message p {
+    font-size: larger;
+    color: var(--dark);
+}
+
+.evaluation-form-submit button {
+    max-width: 300px;
+    margin: auto;
+    margin-top: 50px !important;
+    background: var(--purple);
+}
+
+/* Evaluation Form */
+
+
+/* Add Factor Question */
+
+
+
+/* Add Factor Question */
+
+
+/* login page */
+
+.contain {
+    height: 100vh;
+    width: 100vw;
+    background: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/16332411_rm347-porpla-02-a-01.jpg);
+    background-size: cover;
+}
+
+.contain .card {
+    height: 42vh;
+    width: 55vw;
+    border-radius: 0;
+    display: flex;
+    flex-direction: row;
+    background: var(--purple);
+}
+
+.contain .card .login-form {
+    width: 40%;
+    height: 100%;
+    background: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contain .card .login-form .form-padding {
+    width: 80%;
+}
+
+.contain .card .login-form .form-padding>p {
+    font-size: x-large;
+    font-weight: 100;
+}
+
+.login-bg-color {
+    background: var(--purple);
+    color: var(--white);
+
+}
+
+.login-bg-color:hover {
+    background: var(--purple);
+    color: var(--white);
+}
+
+.contain .card .signin-part {
+    width: 60%;
+    height: 100%;
+    padding: 30px;
+    padding-top: 8%;
+}
+
+.contain .card .signin-part p {
+    color: var(--white);
+    font-weight: 300;
+    font-size: large;
+    margin: 0;
+    padding: 0;
+}
+
+.contain .card .signin-part .signin-part-head {
+    font-size: xx-large;
+    font-weight: 400;
+    color: var(--white);
+}
+
+
+
+/* login page */
+
+/* Register Page */
+
+.contain-register {
+    height: 100vh;
+    width: 100vw;
+    background: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray);
+    background-image: url(../img/16332411_rm347-porpla-02-a-01.jpg);
+    background-size: cover;
+}
+
+.contain-register .card {
+    /* min-height: ;
+    min-width: 600px; */
+    height: 85%;
+    width: 75%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: row;
+    background: var(--purple);
+    
+}
+
+.contain-register .card .signin-form {
+    width: 75%;
+    height: 100%;
+    background: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.contain-register .card .signin-form .form-padding {
+    /* display: flex;
+    flex-direction: column; */
+    width: 80%;
+    
+}
+
+.contain-register .card .signin-form .form-padding label {
+    color: var(--dark);
+    font-weight: 300;
+}
+
+.contain-register .card .login-part {
+    width: 25%;
+    height: 100%;
+    padding: 30px;
+    padding-top: 8%;
+}
+
+.sigin-form-section-header {
+    font-size: larger;
+    color: var(--purple);
+    font-weight: 400;
+
+}
+
+.contain-register .card .signin-form .signin-form-header {
+    font-size: x-large;
+    color: var(--dark);
+    font-weight: 400;
+}
+
+
+
+
+.contain-register .card .login-part p {
+    color: var(--white);
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+.contain-register .card .login-part .login-part-head {
+    font-size: xx-large;
+    font-weight: 400;
+    color: var(--white);
+}
+
+/* Register Page */
+
+
+
+/* Admin Dashboard */
+
+.admin-dashboard-head-stat {
+    font-weight: 400 !important;
+    color: var(--dark);
+    transition: all 0.3s ease;
+    animation: fadein 3s;
+
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* .chart-data-admin {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 20px;
+    border: 1px solid red;
+} */
+
+.chart-data-admin .card {
+    padding: 16px;
+    min-width: 300px;
+    width: 100%;
+    overflow-x: auto;
+    height: 400px;
+    min-height: 400px;
+    min-width: 400px;
+}
+
+
+.chart-data-admin .card .user-activity-card-header{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.chart-data-admin .card .user-activity-card-header p{
+    font-weight: 700;
+    color: var(--dark);
+    font-size: large;
+}
+.all-user-activity-cards{
+    overflow-y:auto
+}
+
+.user-activity-card{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.user-activity-card .first-part{
+    display: flex;
+    align-items: center;
+}
+
+.user-activity-card .first-part .user-activity-card-image{
+    background: #EDF4FF;
+    border-radius: 5px;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.user-activity-card .first-part .user-activity-card-image i{
+    font-size: larger;
+    color: var(--purple);
+}
+
+.user-activity-card .first-part .user-activity-card-detail{
+    margin-left: 10px;
+}
+.user-activity-card .first-part .user-activity-card-detail p{
+    margin: 0;
+    padding: 0;
+}
+.user-activity-card .first-part .user-activity-card-detail .header{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark);
+}
+.user-activity-card .first-part .user-activity-card-detail .subheader{
+    font-size: small;
+    color: var(--dark-gray);
+}
+
+.user-activity-card .time{
+    background: #FFF9ED;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.user-activity-card .time  p{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+/* Admin Dashboard */

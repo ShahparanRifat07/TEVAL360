@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- MAIN -->
+<main>
+    <h1 class="title">Add Department</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="department_list.html">Departments</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Add Department</a></li>
+    </ul>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Department Information</h4>
+            </div>
+            <hr>
+            <div class="add-student-form">
+                <form action="{% url 'stakeholder:add-department' %}" method="POST">
+                    {% csrf_token %}
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label  class="form-label text-dark">Department Name</label>
+                            <div class="form-outline">
+                                <input type="text" name="name" class="form-control"
+                                    placeholder="Enter Department Name" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label  class="form-label text-dark">Head of Department</label>
+                            <div class="form-outline">
+                                <input type="text" name="head" class="form-control"
+                                    placeholder="Enter Head of Department" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4">
+                        <div class="col-12">
+                            <label  class="form-label text-dark">Description</label>
+                            <div class="form-outline">
+                                <textarea class="form-control" name="description" id="" cols="30" rows="5"
+                                    placeholder="Write Department Description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Submit button -->
+                    <div class="student-submit">
+                        <button type="submit" data-mdb-ripple-duration="0"
+                            class="btn btn-primary btn-block mb-4 mt-4">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}
