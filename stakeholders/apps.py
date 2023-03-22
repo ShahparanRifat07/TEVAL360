@@ -1,6 +1,9 @@
 from django.apps import AppConfig
 
 
-class StakeholdersConfig(AppConfig):
+class StakeholderConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'stakeholders'
+    name = 'stakeholder'
+
+    def ready(self):
+        import stakeholder.signals
