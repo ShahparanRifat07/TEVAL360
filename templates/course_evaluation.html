@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- MAIN -->
+<main>
+    <h1 class="title">Course Evaluation</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Course Evaluation</a></li>
+    </ul>
+
+
+
+    <div class="add-student">
+        <div class="card">
+            {% if evaluation_started == True %}
+            <div class="add-student-head">
+                <h4 class="text-dark">Enrolled Courses</h4>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Course Teacher</th>
+                            <th>Section</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for course in courses %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+
+                            <td>{{course.course_id}}</td>
+                            <td>{{course.course_name}}</td>
+                            <td><a href="">{{course.course_teacher.first_name}} {{course.course_teacher.last_name}}</a></td>
+                            <td>{{course.section}}</td>
+                            <td>
+                                <a href="{% url 'evaluation:course-evaluation-form' course.id %}" class="btn btn-rounded student-list-edit">Evaluate</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+            {% else %}
+            <div>
+                <h5>Evaluation isn't started yet</h5>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</main>
+
+<!-- MAIN -->
+{% endblock %}
