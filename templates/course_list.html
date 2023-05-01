@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Courses</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Courses</a></li>
+    </ul>
+
+
+    <div class="search-list mst-4">
+        <form action="" method="POST">
+            <div class="row mb-4">
+                <div class="col-5">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example1" class="form-control" placeholder="Search by ID ..." />
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Course Name ..." />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <!-- Submit button -->
+                    <!-- <div class="student-submit"> -->
+                    <a href="" type="submit" class="btn btn-primary bg-color-purple"><i
+                            class="fa-solid fa-magnifying-glass"></i></a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </form>
+        <!-- 3 column grid layout with text inputs for the first and last names -->
+    </div>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Courses</h4>
+
+                <div>
+                    <a href="" class="btn btn-primary bg-color-purple"><i class="fa-solid fa-download"></i>
+                        Download</a>
+                    <a href="{% url 'stakeholder:add-course' %}" class="btn btn-primary ms-2 bg-color-purple"><i
+                            class="fa-solid fa-plus"></i></a>
+                </div>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Course Name</th>
+                            <th>Course ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for course in courses  %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                        <a href="" class="fw-bold mb-1">{{course.course_name}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{course.course_id}}</td>
+                            <td>
+                                <a href="" class="btn btn-rounded bg-light student-list-edit">View Course</a>
+                                <a href="{% url 'stakeholder:assign-course-student' course.id %}" class="btn btn-rounded student-list-edit">Assign Student</a>
+                                <a href="{% url 'stakeholder:assign-course-teacher' course.id %}" class="btn btn-rounded  student-list-edit">Assign Teacher</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                            
+
+
+
+                    </tbody>
+                </table>
+
+                <div class="mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}
