@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Evaluation</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="index.html">Colleague Evaluation</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Fahim Hafiz</a></li>
+    </ul>
+
+
+
+    <div class="evaluation mt-4">
+        <div class="card">
+            {% if evaluation_started == True %}
+            <div class="evaluation-head">
+                <h4 class="text-dark">Evaluation</h4>
+            </div>
+            <hr>
+            <div class="evaluation-course-details">
+                <p><span>Teacher : </span>{{colleague.first_name}}
+                    {{colleague.last_name}}</p>
+                <p><span>Designation : </span> {{colleague.designation}}</p>
+                <p><span>Department : </span> {{colleague.department.name}}</p>
+            </div>
+            <hr>
+
+
+            <div class="stakeholder-evaluation-form">
+                <form action="{% url 'evaluation:colleague-evaluation-save' colleague.id evaluation_event.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="evaluation-question">
+                        {% for question in questions%}
+
+                        <div class="form-outline mb-4">
+                            <p> <span class="me-2">Q-{{forloop.counter}}:</span>{{question.question}}</p>
+
+                            <div class="form-check">
+                                <input class="form-check-input ms-2" value="5" type="radio" name="question-{{ question.id }}"
+                                    id="flexRadioDefault1" required/>
+                                <label class="form-check-label" for="flexRadioDefault1"> Strongly Agree </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input ms-2" value="4" type="radio" name="question-{{ question.id }}"
+                                    id="flexRadioDefault2" />
+                                <label class="form-check-label " for="flexRadioDefault2"> Agree
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input ms-2" value="3" type="radio" name="question-{{ question.id }}"
+                                    id="flexRadioDefault1" />
+                                <label class="form-check-label" for="flexRadioDefault1"> Neither Agree or
+                                    Disagree </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input ms-2" value="2" type="radio" name="question-{{ question.id }}"
+                                    id="flexRadioDefault1" />
+                                <label class="form-check-label" for="flexRadioDefault1"> Disagree </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input ms-2" value="1" type="radio" name="question-{{ question.id }}"
+                                    id="flexRadioDefault1" />
+                                <label class="form-check-label" for="flexRadioDefault1">Strongly Disagree
+                                </label>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                    <div class="evaluation-form-message">
+                        <p>Message:</p>
+                        <!-- Message input -->
+                        <div class="form-outline mb-4">
+                            <textarea class="form-control" id="form4Example3" rows="3"></textarea>
+                            <label class="form-label" for="form4Example3">Write Message</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="evaluation-form-submit">
+                        <button type="submit" data-mdb-ripple-duration="0"
+                            class="btn btn-primary btn-block mb-4 mt-4">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+            {% else %}
+            <div>
+                <h5>Evaluation isn't started yet</h5>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+</section>
+
+
+{% endblock %}
