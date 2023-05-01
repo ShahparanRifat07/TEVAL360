@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Teachers</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Parents</a></li>
+    </ul>
+
+
+    <div class="search-list mst-4">
+        <form action="" method="POST">
+            <div class="row mb-4">
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example1" class="form-control"
+                            placeholder="Search by Stuent ID ..." />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control"
+                            placeholder="Search by Username ..." />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Phone ..." />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <!-- Submit button -->
+                    <!-- <div class="student-submit"> -->
+                    <a href="" type="submit" class="btn btn-primary bg-color-purple"><i
+                            class="fa-solid fa-magnifying-glass"></i></a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </form>
+        <!-- 3 column grid layout with text inputs for the first and last names -->
+    </div>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Parents</h4>
+
+                <div>
+                    <a href="" class="btn btn-primary bg-color-purple"><i class="fa-solid fa-download"></i>
+                        Download</a>
+                </div>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Student ID</th>
+                            <th>Parent Username</th>
+                            <th>Father's Name</th>
+                            <th>Mother's Name</th>
+                            <th>Phone Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+
+                            <td>01191001</td>
+                            <td>ABD124</td>
+                            <td>Abd Smith</td>
+                            <td>Black Rose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+
+                            <td>01191002</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+
+                            <td>01191003</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+
+                            <td>01191004</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+
+                            <td>01191005</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+
+                            <td>01191006</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+
+                            <td>01191007</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>8</td>
+
+                            <td>01191008</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+
+                            <td>01191009</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>10</td>
+
+                            <td>01191010</td>
+                            <td>SED124</td>
+                            <td>Sedd Heith</td>
+                            <td>Drlack Poose</td>
+                            <td>
+                                01911213243
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <a href="" class="btn btn-rounded student-list-edit"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+
+                <div class="mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}
