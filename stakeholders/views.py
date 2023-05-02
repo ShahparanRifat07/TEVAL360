@@ -358,6 +358,94 @@ def view_teacher_list(request):
             raise PermissionDenied("You are not allowed")
     else:
         return redirect('stakeholder:login')
+    
+def add_administrator(request):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            if request.method == 'POST':
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                id = request.POST.get('id')
+                phone = request.POST.get('phone')
+                role =request.POST.get('role')
+                email = request.POST.get('email')
+                username = request.POST.get('username')
+                password = request.POST.get('password')
+                add_teacher = request.POST.get('add-teacher')
+                add_student = request.POST.get('add-student')
+                add_course = request.POST.get('add-course')
+                edit_teacher = request.POST.get('edit-teacher')
+                edit_student = request.POST.get('edit-student')
+                edit_course = request.POST.get('edit-course')
+
+
+                administrator = Administrator(first_name=first_name,last_name=last_name,administrative_id = id,role=role,phone=phone,institution=institution)
+                administrator._administrator_username = username
+                administrator._administrator_password = password
+                administrator._administrator_email = email
+                administrator._add_teacher = add_teacher
+                administrator._add_student = add_student
+                administrator._add_course = add_course
+                administrator._edit_teacher = edit_teacher
+                administrator._edit_student = edit_student
+                administrator._edit_course = edit_course
+
+                administrator.save()
+                
+                return redirect('stakeholder:add-administrator')
+            if request.method == 'GET':
+                context = {
+                    'admin' : institution.institution_admin,
+                }
+                return render(request,'add_administrator.html',context)
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')def add_administrator(request):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            if request.method == 'POST':
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                id = request.POST.get('id')
+                phone = request.POST.get('phone')
+                role =request.POST.get('role')
+                email = request.POST.get('email')
+                username = request.POST.get('username')
+                password = request.POST.get('password')
+                add_teacher = request.POST.get('add-teacher')
+                add_student = request.POST.get('add-student')
+                add_course = request.POST.get('add-course')
+                edit_teacher = request.POST.get('edit-teacher')
+                edit_student = request.POST.get('edit-student')
+                edit_course = request.POST.get('edit-course')
+
+
+                administrator = Administrator(first_name=first_name,last_name=last_name,administrative_id = id,role=role,phone=phone,institution=institution)
+                administrator._administrator_username = username
+                administrator._administrator_password = password
+                administrator._administrator_email = email
+                administrator._add_teacher = add_teacher
+                administrator._add_student = add_student
+                administrator._add_course = add_course
+                administrator._edit_teacher = edit_teacher
+                administrator._edit_student = edit_student
+                administrator._edit_course = edit_course
+
+                administrator.save()
+                
+                return redirect('stakeholder:add-administrator')
+            if request.method == 'GET':
+                context = {
+                    'admin' : institution.institution_admin,
+                }
+                return render(request,'add_administrator.html',context)
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
 
 
 def add_department(request):
