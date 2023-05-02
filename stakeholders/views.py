@@ -625,3 +625,24 @@ def assign_teacher(request,cid,tid):
     else:
         return redirect('stakeholder:login')
     
+
+def student_list_json(request,cid,name):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            try:
+                course = Course.objects.get(id = cid)
+            except:
+                return  HttpResponseNotFound("Not found")
+            if course.institution == institution:
+                enrolled_students = course.course_students.all()
+                unenrolled_students = Student.objects.filter(institution=institution).exclude(pk__in=[item.pk for item in enrolled_students])
+                qs = unenrolled_students.filter(Q(first_name__contains=name) | Q(last_name__contains = name))
+                qs_json = serializers.serialize('json', qs)
+                return HttpResponse(qs_json, content_type='application/json')
+            else:
+                raise PermissionDenied("You are not allowed")
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
