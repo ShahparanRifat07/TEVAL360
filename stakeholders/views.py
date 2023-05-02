@@ -243,22 +243,20 @@ def add_student_excel(request):
                     return HttpResponse("Wrong Format")
                 
                 imported_data = dataset.load(new_student.read(),format='xlsx')
-                for data in imported_data:
-                    # try:
-                        depart = Department.objects.get(id=data[13],institution=institution[0])
-                        student = Student(first_name = data[1],last_name = data[2],student_id =data[3],father_name=data[4],mother_name=data[5],
-                                        gender=data[6],dob=data[7],phone_number=str(data[8]),address=data[9],city=data[10],state=data[11],zipcode=str(data[12]),
-                                        department = depart,email=data[14],institution = institution[0])
+                with transaction.atomic():
+                    for data in imported_data:
+                            depart = Department.objects.get(id=data[13],institution=institution[0])
+                            student = Student(first_name = data[1],last_name = data[2],student_id =data[3],father_name=data[4],mother_name=data[5],
+                                            gender=data[6],dob=data[7],phone_number=str(data[8]),address=data[9],city=data[10],state=data[11],zipcode=str(data[12]),
+                                            department = depart,email=data[14],institution = institution[0])
 
-                        student._student_username = data[15]
-                        student._student_password = str(data[16])
-                        student._parent_username = data[17]
-                        student._parent_phone_number = str(data[18])
-                        student._parent_password = str(data[19])
+                            student._student_username = data[15]
+                            student._student_password = str(data[16])
+                            student._parent_username = data[17]
+                            student._parent_phone_number = str(data[18])
+                            student._parent_password = str(data[19])
 
-                        student.save()
-                    # except:
-                    #     print("print a messege-->add_student_excel")
+                            student.save()
                 
                 return render(request,'excel_add_students.html')
 
@@ -271,6 +269,16 @@ def add_student_excel(request):
             return HttpResponse("You are not allowed")
     else:
         return redirect('stakeholder:login')
+    
+def download_student_excel(request):
+    file_path = BASE_DIR / 'static/file/student_upload_template.xlsx'
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as excel:
+            data = excel.read()
+
+        response = HttpResponse(data,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename=add_student.xlsx'
+        return response
     
 
 def view_student_list(request):
