@@ -195,6 +195,11 @@ def add_student(request):
                 zipcode = request.POST.get('zipcode')
 
 
+                valided_add_student_form(first_name,last_name,student_id,father_name,mother_name,gender,dob,phone,
+                                         department,student_username,student_password,email,parent_username,
+                                         parent_password,parent_phone)
+
+
                 dept = Department.objects.get(id=department)
                 student = Student(first_name = first_name,last_name = last_name,student_id = student_id,father_name=father_name,
                                     mother_name = mother_name, gender = gender,dob=dob,phone_number = phone,email = email,
