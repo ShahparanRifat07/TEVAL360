@@ -83,6 +83,20 @@ def parent_dashboard(request):
             return HttpResponse("You are not a Parent")
     else:
         return redirect('stakeholder:login')    
+def teacher_dashboard(request):
+    if request.user.is_authenticated:
+        user = request.user
+        teacher = Teacher.objects.get(user= user)
+        if teacher is not None:
+            context = {
+                'teacher' : teacher,
+            }
+            return render(request,'teacher_dashboard.html',context)
+        else:
+            return HttpResponse("You are not a Teacher")
+    else:
+        return redirect('stakeholder:login')
+    
     
 
 def dashboard(request):
