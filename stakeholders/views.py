@@ -115,15 +115,28 @@ def administrator_dashboard(request):
 def dashboard(request):
     if request.user.is_authenticated:
         user = request.user
-        institution = Institution.objects.filter(institution_admin=user)
-        if institution:
+        institution_admin = Institution.objects.filter(institution_admin=user)
+        if institution_admin:
             return redirect("stakeholder:admin-dashboard")
         else:
-            student = Student.objects.get(user= user)
+            student = Student.objects.filter(user= user).first()
+            print(student)
             if student is not None:
                 return redirect("stakeholder:student-dashboard")
             else:
-                pass
+                parent = Parent.objects.filter(user= user).first()
+                if parent is not None:
+                    return redirect("stakeholder:parent-dashboard")
+                else:
+                    teacher = Teacher.objects.filter(user= user).first()
+                    if teacher is not None:
+                        return redirect("stakeholder:teacher-dashboard")
+                    else:
+                        administrator = Administrator.objects.filter(user= user).first()
+                        if administrator is not None:
+                            return redirect("stakeholder:administrator-dashboard")
+                        else:
+                            return redirect('stakeholder:login')
     else:
         return redirect('stakeholder:login')
     
