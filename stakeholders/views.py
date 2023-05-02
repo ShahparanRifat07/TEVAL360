@@ -646,3 +646,24 @@ def student_list_json(request,cid,name):
             raise PermissionDenied("You are not allowed")
     else:
         return redirect('stakeholder:login')
+    
+
+def student_list_all_json(request,cid):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            try:
+                course = Course.objects.get(id = cid)
+            except:
+                return  HttpResponseNotFound("Not found")
+            if course.institution == institution:
+                enrolled_students = course.course_students.all()
+                unenrolled_students = Student.objects.filter(institution=institution).exclude(pk__in=[item.pk for item in enrolled_students])
+                qs_json = serializers.serialize('json', unenrolled_students)
+                return HttpResponse(qs_json, content_type='application/json')
+            else:
+                    raise PermissionDenied("You are not allowed")
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
