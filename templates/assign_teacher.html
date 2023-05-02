@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Assign Teacher</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="{% url 'stakeholder:course-list' %}">Course</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Assign Teacher</a></li>
+    </ul>
+
+    <div class="card p-3">
+        <h4>Assign Teacher -> <span class="text-color-purple">{{course.course_name}} ({{course.section}})</span> </h4>
+    </div>
+
+    <div class="search-list mst-4">
+        <div class="row mb-4 mt-4">
+            <div class="col-10">
+                <div class="form-outline bg-white">
+                    <input id="sName" type="text" id="form6Example1" class="form-control"
+                        placeholder="Search Teachers ..." />
+                </div>
+            </div>
+
+            <div class="col-2">
+                <button id="btnSearch" class="btn btn-primary bg-color-purple"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        <!-- 3 column grid layout with text inputs for the first and last names -->
+    </div>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Teachers</h4>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Teacher ID</th>
+                            <th>Designation</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                        {% for teacher in teachers%}
+                        <tr>
+                            <td>1</td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="/media/{{teacher.image}}" alt="{{teacher.first_name}} {{teacher.last_name}}"
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <a href="" class="fw-bold mb-1">{{teacher.first_name}} {{teacher.last_name}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{teacher.teacher_id}}</td>
+                            <td>{{teacher.designation}}</td>
+                            <td>
+                                <p class="fw-normal mb-1">{{teacher.email}}</p>
+                            </td>
+                            <td>
+                                {{teacher.phone}}
+                            </td>
+                            <td>{{teacher.department.name}}</td>
+                            <td>
+                                <a href="{% url 'stakeholder:assign-teacher' course.pk teacher.pk %}" class="btn btn-rounded student-list-edit">Assign</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!-- MAIN -->
+{% endblock %}

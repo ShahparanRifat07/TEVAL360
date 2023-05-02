@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Assign Students</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="{% url 'stakeholder:course-list' %}">Course</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Assign Students</a></li>
+    </ul>
+
+    <div class="card p-3">
+        <h4>Assign Students -> <span class="text-color-purple">{{course.course_name}} ({{course.section}})</span> </h4>
+    </div>
+
+    <div class="search-list mst-4">
+        <div class="row mb-4 mt-4">
+            <div class="col-10">
+                <div class="form-outline bg-white">
+                    <input id="sName" type="text" id="form6Example1" class="form-control"
+                        placeholder="Search Students ..." />
+                </div>
+            </div>
+
+            <div class="col-2">
+                <button id="btnSearch" class="btn btn-primary bg-color-purple"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        <!-- 3 column grid layout with text inputs for the first and last names -->
+    </div>
+
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Unenrolled Students</h4>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table id="student-table" class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Stuent ID</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-table-body">
+
+                        {% for student in students %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                        <a href="" class="fw-bold mb-1">{{student.first_name}} {{student.last_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{student.student_id}}</td>
+                            <td>
+                                <p class="fw-normal mb-1">{{student.email}}</p>
+                            </td>
+                            <td>
+                                {{student.phone_number}}
+                            </td>
+                            <td>
+                                <a href="{% url 'stakeholder:assign-student' course.pk student.pk %}" class="btn btn-rounded student-list-edit">Assign</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+{{ course.pk|json_script:"course_id" }}
+<!-- MAIN -->
+{% endblock %}
+
+{% block assign_student %}
+<script type="text/javascript">
+    // let btnSearch = document.getElementById('btnSearch');
+    // btnSearch.addEventListener('click', SearchStudent);
+
+    let student_input = document.getElementById('sName');
+    student_input.addEventListener('keyup',SearchStudent);
+
+    function SearchStudent() {
+        let student_name = document.getElementById('sName').value;
+        const course_id = JSON.parse(document.getElementById('course_id').textContent);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:8000/api/institution/course/'+course_id+'/student-list/'+student_name, true);
+
+
+        xhr.onload = function () {
+            if (this.status === 200) {
+                let table_body = document.querySelector("#student-table-body");
+                let obj = JSON.parse(this.responseText);
+                console.log(obj);
+                if (obj.length == 0) {
+                    var table = document.getElementById("student-table");
+                    let html = '';
+                    table_body.innerHTML = html;
+                } else {
+                    var table = document.getElementById("student-table");
+                    let i = 1;
+                    let html = '';
+                    let assign_url = "";
+
+                    console.log(assign_url)
+                    for (student in obj) {
+                        student_id = String(obj[student].pk);
+                        assign_url=`http://127.0.0.1:8000/institution/course/${course_id}/assign-student/${student_id}`;
+                        html += '<tr><td>' + i + '</td>' + '<td> <div class="d-flex align-items-center"> <a href="" class="fw-bold mb-1">'+ String(obj[student].fields.first_name) + ' '+String(obj[student].fields.last_name) + '</a></div></td>' + '<td>' + String(obj[student].fields.student_id) + '</td> <td> <p class="fw-normal mb-1">'+String(obj[student].fields.email)+'</p></td><td>'+String(obj[student].fields.phone_number)+'</td><td><a href="'+assign_url+'" class="btn btn-rounded student-list-edit">Assgin</a></td></tr>';
+                        i++;
+                    }
+
+                    table_body.innerHTML = html;
+                }
+            } else {
+                console.log("something went wrong");
+            }
+
+        }
+        xhr.send();
+    }
+</script>
+
+{% endblock %}
