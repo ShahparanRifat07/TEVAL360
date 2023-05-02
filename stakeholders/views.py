@@ -578,3 +578,30 @@ def assign_student(request,cid,sid):
             raise PermissionDenied("You are not allowed")
     else:
         return redirect('stakeholder:login')
+    
+def assign_course_to_teacher(request,cid):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            try:
+                course = Course.objects.get(id = cid)
+            except:
+                return HttpResponseNotFound("Not found")
+            if course.course_teacher is None:
+                teachers = Teacher.objects.filter(institution = institution)
+            else:
+                teachers = Teacher.objects.filter(institution = institution).exclude(pk = course.course_teacher.pk)
+
+            if request.method == 'GET':
+                context = {
+                    'course' : course,
+                    'teachers' : teachers,
+                    'admin' : institution.institution_admin,
+                }
+                return render(request,'assign_teacher.html',context)
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
+    
+
