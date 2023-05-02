@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
-from .models import Institution,Student,Parent,Department,Teacher
-from django.http import HttpResponse
+from .models import Institution,Student,Parent,Department,Teacher,Course,Administrator
+from django.http import HttpResponse, FileResponse, HttpResponseNotFound
 from django.core.exceptions import PermissionDenied
 from .resources import StudentResource
 from tablib import Dataset
 from django.urls import reverse
 import traceback
+import os
+from django.db import transaction
+from core.settings import BASE_DIR
+from .utility import valided_add_student_form
+from django.core import serializers
+from django.db.models import Q
 # Create your views here.
 
 
@@ -402,7 +408,9 @@ def add_administrator(request):
         else:
             raise PermissionDenied("You are not allowed")
     else:
-        return redirect('stakeholder:login')def add_administrator(request):
+        return redirect('stakeholder:login')
+
+def add_administrator(request):
     if request.user.is_authenticated:
         institution = Institution.objects.filter(institution_admin=request.user).first()
         if institution:
@@ -483,6 +491,68 @@ def view_department_list(request):
                 'admin' : institution[0].institution_admin,
             }
             return render(request,'department_list.html',context)
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
+    
+
+def add_course(request):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user)
+        if institution:
+            if request.method == 'POST':
+                id = request.POST.get('course_id')
+                name = request.POST.get('course_name')
+                section =request.POST.get('course_section')
+
+                course = Course(course_id = id, course_name = name, section = section,institution = institution[0])
+                course.save()
+
+                return redirect('stakeholder:course-list')
+            if request.method == 'GET':
+                context = {
+                    'admin' : institution[0].institution_admin,
+                }
+                return render(request,'add_course.html',context)
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
+
+
+def course_list(request):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            courses = Course.objects.filter(institution=institution)
+            context={
+                "courses" : courses,
+                'admin' : institution.institution_admin,
+            }
+            return render(request,'course_list.html',context)
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
+
+def assign_course_to_student(request,cid):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            try:
+                course = Course.objects.get(id = cid)
+                enrolled_students = course.course_students.all()
+                unenrolled_students = Student.objects.filter(institution=institution).exclude(pk__in=[item.pk for item in enrolled_students])
+            except:
+                return HttpResponseNotFound("Not found")
+            if request.method == 'GET':
+                context = {
+                    'course' : course,
+                    'students' : unenrolled_students,
+                    'admin' : institution.institution_admin,
+                }
+                return render(request,'assign_student.html',context)
         else:
             raise PermissionDenied("You are not allowed")
     else:
