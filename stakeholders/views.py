@@ -557,3 +557,24 @@ def assign_course_to_student(request,cid):
             raise PermissionDenied("You are not allowed")
     else:
         return redirect('stakeholder:login')
+    
+def assign_student(request,cid,sid):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            try:
+                course = Course.objects.get(id = cid)
+                student = Student.objects.get(id = sid)
+            except:
+                return HttpResponseNotFound("Not found")
+            
+            if student.course_students.filter(pk=course.pk).exists():
+                return  HttpResponse("can not add course...already assigned")
+            else:
+                course.course_students.add(student)
+                return redirect('stakeholder:course-list')
+            
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
