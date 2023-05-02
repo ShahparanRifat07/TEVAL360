@@ -605,3 +605,23 @@ def assign_course_to_teacher(request,cid):
         return redirect('stakeholder:login')
     
 
+def assign_teacher(request,cid,tid):
+    if request.user.is_authenticated:
+        institution = Institution.objects.filter(institution_admin=request.user).first()
+        if institution:
+            try:
+                course = Course.objects.get(id = cid)
+                teacher = Teacher.objects.get(id = tid)
+            except:
+                return HttpResponseNotFound("Not found")
+            if course.course_teacher is not None:
+                return  HttpResponse("can not assign teacher...already assigned")
+            else:
+                course.course_teacher = teacher
+                course.save()
+                return redirect('stakeholder:course-list')
+        else:
+            raise PermissionDenied("You are not allowed")
+    else:
+        return redirect('stakeholder:login')
+    
