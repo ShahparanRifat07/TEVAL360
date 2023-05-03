@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Evaluation</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Evaluation Factors</a></li>
+    </ul>
+
+
+
+    <div class="factor-list">
+        <div class="card">
+            <div class="factor-list-head">
+                <h4 class="text-dark">Factors</h4>
+
+                <div>
+                    <a href="add_factors.html" class="btn btn-primary ms-2 bg-color-purple"><i
+                            class="fa-solid fa-plus"></i></a>
+                </div>
+            </div>
+            <hr>
+            <div>
+
+                {% for factor in factors %}
+                <div class="card mt-2">
+                    <div class="card-header bg-color-purple-text-white factor-head-mr-auto">
+                        <h5 data-mdb-toggle="collapse" href="#factor{{factor.id}}" role="button" aria-expanded="true"
+                            aria-controls="factor{{factor.id}}">
+                            {{factor.name}}
+                        </h5>
+
+                        <div class="factor-actions">
+                            <a href="factor_detail.html"><i class="fa-solid fa-pen-to-square ms-3"></i></a>
+                            <a href=""><i class="fa-regular fa-trash-can ms-3"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="collapse multi-collapse mt-3 show" id="factor{{factor.id}}">
+                        <div class="card-body">
+                            {% for questions in factor.question_set.all %}
+                            <p>Q-{{ forloop.counter }} : {{questions.question}}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+
+{% endblock %}
