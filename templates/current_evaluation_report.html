@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- MAIN -->
+<main>
+    <h1 class="title">Evaluation Report (Current)</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Evaluation Report</a></li>
+    </ul>
+
+
+
+    <div class="add-student">
+        <div class="card">
+
+            <div class="add-student-head">
+                <h4 class="text-dark">Evaluation Report</h4>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                {% if teacher.institution.institution_type == "2" or teacher.institution.institution_type == "3" %}
+                <div class="card report-stakehoder mb-2">
+                    <div>
+                        <a href="{% url 'evaluation:student-evaluation-report' evaluation.id %}">
+                            <h5>Student's Evaluation Report</h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'evaluation:student-evaluation-report' evaluation.id %}"><i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if teacher.institution.institution_type == "1" or teacher.institution.institution_type == "2" %}
+                <div class="card report-stakehoder mb-2">
+                    <div>
+                        <a href="{% url 'evaluation:parent-evaluation-report' evaluation.id %}">
+                            <h5>Parent's Evaluation Report</h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'evaluation:parent-evaluation-report' evaluation.id %}"><i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="card report-stakehoder mb-2">
+                    <div>
+                        <a href="{% url 'evaluation:colleague-evaluation-report' evaluation.id %}">
+                            <h5>Colleague's Evaluation Report</h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'evaluation:colleague-evaluation-report' evaluation.id %}"><i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="card report-stakehoder mb-2">
+                    <div>
+                        <a href="{% url 'evaluation:administrator-evaluation-report' evaluation.id %}">
+                            <h5>Administarator's Evaluation Report</h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'evaluation:administrator-evaluation-report' evaluation.id %}"><i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="card report-stakehoder mb-2">
+                    <div>
+                        <a href="{% url 'evaluation:self-evaluation-report' evaluation.id %}">
+                            <h5>Self Evaluation Report</h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'evaluation:self-evaluation-report' evaluation.id %}"><i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}

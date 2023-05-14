@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-<!-- MAIN -->
+
 {% block content %}
+<!-- MAIN -->
 <main>
     <h1 class="title">Add Students</h1>
     <ul class="breadcrumbs">
@@ -31,43 +32,45 @@
                             <label class="form-label text-dark">First Name</label>
                             <div class="form-outline">
                                 <input name="first_name" type="text" class="form-control"
-                                    placeholder="Enter First Name" />
+                                    placeholder="Enter First Name"  required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Last Name</label>
                             <div class="form-outline">
                                 <input name="last_name" type="text" class="form-control"
-                                    placeholder="Enter Last Name" />
+                                    placeholder="Enter Last Name" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Student ID</label>
                             <div class="form-outline">
                                 <input type="text" name="student_id" class="form-control"
-                                    placeholder="Enter Student ID" />
+                                    placeholder="Enter Student ID" required/>
                             </div>
                         </div>
                     </div>
+
+
                     <!-- 3 column grid layout with text inputs for the first and last names -->
                     <div class="row mb-4">
                         <div class="col-4">
                             <label class="form-label text-dark">Father's Name</label>
                             <div class="form-outline">
                                 <input type="text" name="father_name" class="form-control"
-                                    placeholder="Enter Father's Name" />
+                                    placeholder="Enter Father's Name" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Mother's Name</label>
                             <div class="form-outline">
                                 <input type="text" name="mother_name" class="form-control"
-                                    placeholder="Enter Mother's Name" />
+                                    placeholder="Enter Mother's Name" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Gender</label>
-                            <select name="gender" class="form-select form-select" aria-label=".form-select-sm example">
+                            <select name="gender" class="form-select form-select" aria-label=".form-select-sm example" required>
                                 <option selected disabled>Select Gender</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
@@ -75,26 +78,27 @@
                             </select>
                         </div>
                     </div>
+
                     <!-- 3 column grid layout with text inputs for the first and last names -->
                     <div class="row mb-4">
                         <div class="col-4">
                             <label class="form-label text-dark">Date of Birth</label>
                             <div class="form-outline">
                                 <input type="date" name="dob" id="datepicker" class="form-control"
-                                    placeholder="MM-DD-YYYY" />
+                                    placeholder="MM-DD-YYYY" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Phone Number</label>
                             <div class="form-outline">
-                                <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" />
+                                <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required/>
                             </div>
                         </div>
 
                         <div class="col-4">
                             <label class="form-label text-dark">Department</label>
                             <select name="department" class="form-select form-select"
-                                aria-label=".form-select-sm example">
+                                aria-label=".form-select-sm example" required>
                                 <option selected disabled>Select Department</option>
                                 {% for department in departments %}
                                 <option value="{{department.id}}">{{department.name}}</option>
@@ -111,21 +115,21 @@
                             <label class="form-label text-dark">Username</label>
                             <div class="form-outline">
                                 <input type="text" name="student_username" class="form-control"
-                                    placeholder="Enter Username" />
+                                    placeholder="Enter Username" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Email</label>
                             <div class="form-outline">
                                 <input type="email" name="email" class="form-control"
-                                    placeholder="Enter Email Address" />
+                                    placeholder="Enter Email Address" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Password</label>
                             <div class="form-outline">
                                 <input type="password" name="student_password" class="form-control"
-                                    placeholder="Enter Password" />
+                                    placeholder="Enter Password" required/>
                             </div>
                         </div>
                     </div>
@@ -138,21 +142,21 @@
                             <label class="form-label text-dark">Username</label>
                             <div class="form-outline">
                                 <input type="text" name="parent_username" class="form-control"
-                                    placeholder="Enter Username" />
+                                    placeholder="Enter Username" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Phone</label>
                             <div class="form-outline">
                                 <input type="text" name="parent_phone" class="form-control"
-                                    placeholder="Enter Phone Number" />
+                                    placeholder="Enter Phone Number" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label text-dark">Password</label>
                             <div class="form-outline">
                                 <input type="password" name="parent_password" class="form-control"
-                                    placeholder="Enter Password" />
+                                    placeholder="Enter Password" required/>
                             </div>
                         </div>
                     </div>
@@ -193,6 +197,7 @@
                         </div>
                     </div>
 
+
                     <!-- Submit button -->
                     <div class="student-submit">
                         <button type="submit" data-mdb-ripple-duration="0"
@@ -202,6 +207,9 @@
             </div>
         </div>
     </div>
+
 </main>
+
+
 <!-- MAIN -->
 {% endblock %}

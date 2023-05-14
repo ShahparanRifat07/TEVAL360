@@ -4,16 +4,11 @@
 
 <!-- MAIN -->
 <main>
-
-
-
-
-
     <h1 class="title">Add Teachers</h1>
     <ul class="breadcrumbs">
         <li><a href="index.html">Home</a></li>
         <li class="divider">/</li>
-        <li><a href="teacher_list.html">Teachers</a></li>
+        <li><a href="{% url 'stakeholder:teacher-list' %}">Teachers</a></li>
         <li class="divider">/</li>
         <li><a href="" class="active">Add Teacher</a></li>
     </ul>
@@ -35,19 +30,19 @@
                         <div class="col-4">
                             <label  class="form-label text-dark">First Name</label>
                             <div class="form-outline">
-                                <input type="text" name="first_name" class="form-control" placeholder="Enter First Name"/>
+                                <input type="text" name="first_name" class="form-control" placeholder="Enter First Name" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Last Name</label>
                             <div class="form-outline">
-                                <input type="text" name="last_name"  class="form-control" placeholder="Enter Last Name"/>
+                                <input type="text" name="last_name"  class="form-control" placeholder="Enter Last Name" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Teacher ID</label>
                             <div class="form-outline">
-                                <input type="text" name="teacher_id" class="form-control" placeholder="Enter Teacher ID"/>
+                                <input type="text" name="teacher_id" class="form-control" placeholder="Enter Teacher ID" required/>
                             </div>
                         </div>
                     </div>
@@ -58,18 +53,18 @@
                         <div class="col-4">
                             <label  class="form-label text-dark">Designation</label>
                             <div class="form-outline">
-                                <input type="text" name="designation" class="form-control" placeholder="Enter Designation"/>
+                                <input type="text" name="designation" class="form-control" placeholder="Enter Designation" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Joining Date</label>
                             <div class="form-outline">
-                                <input type="date" name="joining_date" class="form-control" placeholder="MM-DD-YYYY"/>
+                                <input type="date" name="joining_date" class="form-control" placeholder="MM-DD-YYYY" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Gender</label>
-                            <select name="gender" class="form-select form-select" aria-label=".form-select-sm example">
+                            <select name="gender" class="form-select form-select" aria-label=".form-select-sm example" required>
                                 <option selected disabled>Select Gender</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
@@ -83,18 +78,18 @@
                         <div class="col-4">
                             <label  class="form-label text-dark">Date of Birth</label>
                             <div class="form-outline">
-                                <input type="date" name="dob" class="form-control" placeholder="MM-DD-YYYY"/>
+                                <input type="date" name="dob" class="form-control" placeholder="MM-DD-YYYY" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Phone Number</label>
                             <div class="form-outline">
-                                <input type="text" name="phone"  class="form-control" placeholder="Enter Phone Number"/>
+                                <input type="text" name="phone"  class="form-control" placeholder="Enter Phone Number" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Department</label>
-                            <select name="department" class="form-select form-select" aria-label=".form-select-sm example">
+                            <select name="department" class="form-select form-select" aria-label=".form-select-sm example" required>
                                 <option selected disabled>Select Department</option>
                                 {% for department in departments %}
                                 <option value="{{department.id}}">{{department.name}}</option>
@@ -110,19 +105,19 @@
                         <div class="col-4">
                             <label  class="form-label text-dark">Username</label>
                             <div class="form-outline">
-                                <input type="text" name="username"  class="form-control" placeholder="Enter Username"/>
+                                <input type="text" name="username"  class="form-control" placeholder="Enter Username" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Email</label>
                             <div class="form-outline">
-                                <input type="email" name="email" class="form-control" placeholder="Enter Email Address"/>
+                                <input type="email" name="email" class="form-control" placeholder="Enter Email Address" required/>
                             </div>
                         </div>
                         <div class="col-4">
                             <label  class="form-label text-dark">Password</label>
                             <div class="form-outline">
-                                <input type="password" name="password"  class="form-control" placeholder="Enter Password"/>
+                                <input type="password" name="password"  class="form-control" placeholder="Enter Password" required/>
                             </div>
                         </div>
                     </div>
@@ -172,9 +167,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 </main>
 

@@ -1,224 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+{% block content %}
+<!-- MAIN -->
+<main>
+    <h1 class="title">Add Teachers</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="course_list.html">Courses</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Add Course</a></li>
+    </ul>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
-    <!-- Google Fonts -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="main.css" />
-</head>
-
-<body>
-    <!-- SIDEBAR -->
-    <section id="sidebar">
-        <ul class="side-menu">
-            <li>
-                <a href="index.html"><i class="bx bxs-dashboard icon"></i>Dashboard</a>
-            </li>
-            <li>
-                <a href=""><i class="fas fa-chalkboard-teacher icon"></i>Teachers
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="teacher_list.html">Teacher List</a></li>
-                    <li><a href="add_teacher.html">Add Teacher</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href=""><i class="fas fa-graduation-cap icon"></i></i>Students
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="student_list.html">Student List</a></li>
-                    <li><a href="add_student.html">Add Student</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href=""><i class="fa-solid fa-user-group icon"></i>Parents
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="parent_list.html">Parent List</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href=""><i class="fa-solid fa-user-tie icon"></i>Administrator
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="administrator_list.html">Administrator List</a></li>
-                    <li><a href="add_administraor.html">Add Administrator</a></li>
-                    <li><a href="administrative_role_list.html">Administrative Role List</a></li>
-                    <li><a href="add_administrative_role.html">Add Administrative Role</a></li>
-                    
-                </ul>
-            </li>
-
-            <li>
-                <a href=""><i class="fas fa-building icon"></i>Department
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="department_list.html">Department List</a></li>
-                    <li><a href="add_department.html">Add Department</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href=""><i class="fas fa-book-reader icon"></i>Courses
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="course_list.html">Course List</a></li>
-                    <li><a href="add_course.html">Add Course</a></li>
-                    <li><a href="">Assign Course to Teachers</a></li>
-                    <li><a href="">Assign Course to Students</a></li>
-                    
-                </ul>
-            </li>
-
-            <li>
-                <a href=""><i class="fa-solid fa-list-check icon"></i>Evaluation
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="">Evaluation Factors</a></li>
-                    <li><a href="">Draft List</a></li>
-                    <li><a href="">Create Evaluation</a></li>
-                </ul>
-            </li>
-            
-            <li>
-                <a href=""><i class="fa-solid fa-print icon"></i>Reprots
-                    <i class="bx bx-chevron-right icon-right"></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="">Student Evaluation</a></li>
-                    <li><a href="">Parent Evaluation</a></li>
-                    <li><a href="">Teacher Evaluation</a></li>
-                    <li><a href="">Administrator Evaluation</a></li>
-                    <li><a href="">Evaluation History</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href=""><i class="fa-solid fa-gear icon"></i>Settings</a>
-            </li>
-        </ul>
-    </section>
-    <!-- SIDEBAR -->
-
-    <!-- NAVBAR -->
-    <section id="content">
-        <nav>
-            <i class="bx bx-menu toggle-sidebar"></i>
-            <form action="">
-                <div class="form-group">
-                    <input type="text" placeholder="Search" />
-                    <i class="bx bx-search-alt-2 icon"></i>
-                </div>
-            </form>
-            <a href="#" class="nav-link">
-                <i class="bx bxs-bell icon"></i>
-                <span class="badge">5</span>
-            </a>
-
-            <span class="divider"></span>
-            <div class="profile">
-                <img src="https://www.leisureopportunities.co.uk/images/995586_746594.jpg" alt="" />
-                <ul class="profile-link">
-                    <li>
-                        <a href=""><i class="bx bxs-user-circle icon"></i>Profile</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="bx bxs-user-circle icon"></i>Profile</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="bx bxs-user-circle icon"></i>Logout</a>
-                    </li>
-                </ul>
+    <div class="add-student">
+        <div class="card">
+            <div class="add-student-head">
+                <h4 class="text-dark">Course Details</h4>
+                <a href="" class="btn btn-success"><i class="fa-solid fa-file-excel icon"></i> Add Courses Using
+                    XLS</a>
             </div>
-        </nav>
-
-        <!-- MAIN -->
-        <main>
-            <h1 class="title">Add Teachers</h1>
-            <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="divider">/</li>
-                <li><a href="course_list.html">Courses</a></li>
-                <li class="divider">/</li>
-                <li><a href="" class="active">Add Course</a></li>
-            </ul>
-
-            <div class="add-student">
-                <div class="card">
-                    <div class="add-student-head">
-                        <h4 class="text-dark">Course Details</h4>
-                        <a href="" class="btn btn-success"><i class="fa-solid fa-file-excel icon"></i> Add Courses Using
-                            XLS</a>
-                    </div>
-                    <hr>
-                    <div class="add-student-form">
-                        <form  action="" method="POST">
-
-
-                            
-                            <!-- 3 column grid layout with text inputs for the first and last names -->
-                            <div class="row mb-4">
-                                <div class="col-4">
-                                    <label for="exampleInputEmail1" class="form-label text-dark">Course ID</label>
-                                    <div class="form-outline">
-                                        <input type="text" id="form6Example1" class="form-control" placeholder="Enter Course ID"/>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <label for="exampleInputEmail1" class="form-label text-dark">Course Name</label>
-                                    <div class="form-outline">
-                                        <input type="text" id="form6Example2" class="form-control" placeholder="Enter Course Name"/>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <label for="exampleInputEmail1" class="form-label text-dark">Section</label>
-                                    <div class="form-outline">
-                                        <input type="text" id="form6Example2" class="form-control" placeholder="Enter Section"/>
-                                    </div>
-                                </div>
+            <hr>
+            <div class="add-student-form">
+                <form action="{% url 'stakeholder:add-course' %}" method="POST">
+                    {% csrf_token %}
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <label for="exampleInputEmail1" class="form-label text-dark">Course ID</label>
+                            <div class="form-outline">
+                                <input type="text" id="form6Example1" name="course_id" class="form-control"
+                                    placeholder="Enter Course ID" />
                             </div>
-
-
-                            <!-- Submit button -->
-                            <div class="student-submit">
-                                <button type="submit" data-mdb-ripple-duration="0" class="btn btn-primary btn-block mb-4 mt-4">Submit</button>
+                        </div>
+                        <div class="col-4">
+                            <label for="exampleInputEmail1" class="form-label text-dark">Course Name</label>
+                            <div class="form-outline">
+                                <input type="text" id="form6Example2" name="course_name" class="form-control"
+                                    placeholder="Enter Course Name" />
                             </div>
-                        </form>
+                        </div>
+                        <div class="col-4">
+                            <label for="exampleInputEmail1" class="form-label text-dark">Section</label>
+                            <div class="form-outline">
+                                <input type="text" name="course_section" id="form6Example2" class="form-control"
+                                    placeholder="Enter Section" />
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+
+                    <!-- Submit button -->
+                    <div class="student-submit">
+                        <button type="submit" data-mdb-ripple-duration="0"
+                            class="btn btn-primary btn-block mb-4 mt-4">Submit</button>
+                    </div>
+                </form>
             </div>
+        </div>
+    </div>
 
-        </main>
-
-
-        <!-- MAIN -->
-    </section>
-
-    <!-- NAVBAR -->
+</main>
 
 
+<!-- MAIN -->
 
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script type="text/javascript" src="main.js"></script>
-
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
-</body>
-
-</html>
+{% endblock %}

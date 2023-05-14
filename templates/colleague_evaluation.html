@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- MAIN -->
+<main>
+    <h1 class="title">Colleague Evaluation</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Colleague Evaluation</a></li>
+    </ul>
+
+
+
+    <div class="add-student">
+        <div class="card">
+            {% if evaluation_started == True %}
+            <div class="add-student-head">
+                <h4 class="text-dark">Teachers</h4>
+            </div>
+
+            <div class="colleague-notice mt-3">
+                <h5>You must have to evaluate at least 5 of your colleague</h5>
+            </div>
+            <div class="colleague-remaining mb-3">
+                <h5>Remaining: {{reamining_teacher}}</h5>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Teacher ID</th>
+                            <th>Designation</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in teachers %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="/media/{{teacher.image}}" alt="{{teacher.first_name}} {{teacher.last_name}}"
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <a href="" class="fw-bold mb-1">{{teacher.first_name}} {{teacher.last_name}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{teacher.teacher_id}}</td>
+                            <td>{{teacher.designation}}</td>
+                            <td>{{teacher.department.name}}</td>
+                            <td>
+                                <a href="{% url 'evaluation:colleague-evaluation-form' teacher.id %}" class="btn btn-rounded student-list-edit">Evaluate</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+            </div>
+            {% else %}
+            <div>
+                <h5>Evaluation isn't started yet</h5>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}

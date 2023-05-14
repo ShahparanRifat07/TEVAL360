@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- MAIN -->
+<main>
+    <h1 class="title">Evaluation Report (Current)</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Evaluation Report</a></li>
+    </ul>
+
+
+
+    <div class="add-student">
+        <div class="card">
+
+            <div class="add-student-head">
+                <h4 class="text-dark">Colleague's Evaluation Report</h4>
+            </div>
+            <!-- <hr> -->
+            <div class="add-student-form">
+
+                <div>
+                    {{ chart_html|safe }}
+                </div>
+                <div>
+                    <table class="table table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th>Question ID</th>
+                                <th>Question</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                            {% for qeustion in questions%}
+                            <tr>
+                                <td>{{qeustion.id}}</td>
+                                <td>{{qeustion.question}}</td>
+                            </tr>
+                            {% endfor %}
+    
+    
+    
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    {% for question, plot_div in plot_divs.items %}
+                        <h3>Question {{ question }}</h3>
+                        {{ plot_div|safe }}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}

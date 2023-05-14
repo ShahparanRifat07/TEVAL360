@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Dashboard</h1>
+    <ul class="breadcrumbs">
+        <li><a href="">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Dashboard</a></li>
+    </ul>
+
+
+    <div class="notice-data">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fa-regular fa-bell"></i> Important Announcment </h5>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Evaluation Started</h4>
+                <a href="#" class="card-text">Evaluation has been started. Please complete your evaluation as soon as
+                    possible</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-data">
+        <div class="card">
+            <div class="head">
+                <i class="fas fa-book-reader me-2"></i>Courses
+            </div>
+            <h2 class="title">6</h2>
+
+        </div>
+
+        <div class="card">
+            <div class="head">
+                <i class="fas fa-graduation-cap me-2"></i>Total Students
+            </div>
+
+            <h2 class="title">170</h2>
+
+        </div>
+
+        <div class="card">
+            <div class="head">
+                <i class="fa-solid fa-star me-2"></i> Overall Rating
+            </div>
+
+            <h2 class="title">4.1</h2>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}

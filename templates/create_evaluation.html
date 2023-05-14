@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- MAIN -->
+<main>
+    <h1 class="title">Evaluation</h1>
+    <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="" class="active">Create Evaluation</a></li>
+    </ul>
+
+
+    <div class="create-evaluation">
+        <div class="card">
+            <div class="create-evaluation-head">
+                <h3 class="text-dark">Create Evaluation</h3>
+            </div>
+            <hr>
+
+
+
+            <div class="create-evaluation-form">
+                <form action="{% url 'evaluation:start-evaluation' %}" method="POST">
+
+                    {% csrf_token %}
+
+                    <h5 class="text-dark mb-4">Evaluation Period:</h5>
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label for="exampleInputEmail1" class="form-label text-dark">Start Date</label>
+                            <div class="form-outline">
+                                <input type="date" id="start-date" name="start_date" class="form-control"
+                                    placeholder="DD-MM-YYYY" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="exampleInputEmail1" class="form-label text-dark">End Date</label>
+                            <div class="form-outline">
+                                <input type="date" id="end-date" name="end_date" class="form-control"
+                                    placeholder="DD-MM-YYYY" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4">
+                        <h5 class="text-dark mb-4 mt-4">Stakeholders:</h5>
+                        {% if institution.institution_type != "1" %}
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input type="checkbox" id="stakeholder-student" value="{{student.id}}"
+                                    name="stakeholder">
+                                <label class="form-check-label" for="stakeholder-student">Students</label>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input type="checkbox" id="stakeholder-teacher" value="{{teacher.id}}"
+                                    name="stakeholder">
+                                <label class="form-check-label" for="stakeholder-teacher">Teachers</label>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input type="checkbox" id="stakeholder-self" value="{{self.id}}" name="stakeholder">
+                                <label class="form-check-label" for="stakeholder-self">Self</label>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input type="checkbox" id="stakeholder-adminstrator" value="{{administrator.id}}"
+                                    name="stakeholder">
+                                <label class="form-check-label" for="stakeholder-adminstrator">Administrators</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input type="checkbox" id="stakeholder-parent" value="{{parent.id}}" name="stakeholder">
+                                <label class="form-check-label" for="stakeholder-parent">Parents</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4 student-factors">
+                        <h5 class="text-dark mb-4 mt-4"> Evaluation Factors: <i class="fas fa-graduation-cap icon"></i>
+                            Students</h5>
+                        {% for factor in factors %}
+                        {% if student in factor.stakeholder_tag.all %}
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input class="student-checkbox" type="checkbox" id="{{factor.id}}" value="{{factor.id}}" name="student_factors" disabled>
+                                <label class="form-check-label" for="{{factor.id}}">{{factor.name}}</label>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4 teacher-factors">
+                        <h5 class="text-dark mb-4 mt-4"> Evaluation Factors: <i
+                                class="fas fa-chalkboard-teacher icon"></i> Teachers</h5>
+
+
+                        {% for factor in factors %}
+                        {% if teacher in factor.stakeholder_tag.all %}
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input class="teacher-checkbox" type="checkbox" id="{{factor.id}}" value="{{factor.id}}" name="teacher_factors" disabled>
+                                <label class="form-check-label" for="{{factor.id}}">{{factor.name}}</label>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4 parent-factors">
+                        <h5 class="text-dark mb-4 mt-4"> Evaluation Factors: <i class="fa-solid fa-user-group icon"></i>
+                            Parents</h5>
+                        {% for factor in factors %}
+                        {% if parent in factor.stakeholder_tag.all %}
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input class="parent-checkbox" type="checkbox" id="flexSwitchCheckDefault" value="{{factor.id}}" name="parent_factors" disabled>
+                                <label class="form-check-label" for="flexSwitchCheckDefault">{{factor.name}}</label>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4 self-factors">
+                        <h5 class="text-dark mb-4 mt-4"> Evaluation Factors: <i class="fa-solid fa-user"></i>
+                            Self</h5>
+                        {% for factor in factors %}
+                        {% if self in factor.stakeholder_tag.all %}
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox">
+                                <input class="self-checkbox" type="checkbox" id="flexSwitchCheckDefault" value="{{factor.id}}" name="self_factors" disabled>
+                                <label class="form-check-label" for="flexSwitchCheckDefault">{{factor.name}}</label>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- 3 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4 mt-4 adminstrator-factors">
+                        <h5 class="text-dark mb-4 mt-4"> Evaluation Factors: <i class="fa-solid fa-user-tie icon"></i>
+                            Administrators</h5>
+                        {% for factor in factors %}
+                        {% if administrator in factor.stakeholder_tag.all %}
+                        <div class="col-6">
+                            <div class="form-check form-switch permission-checkbox ">
+                                <input class="administrator-checkbox" type="checkbox" id="{{factor.id}}" value="{{factor.id}}" name="administrator_factors" disabled>
+                                <label class="form-check-label active" for="{{factor.id}}">{{factor.name}}</label>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="student-submit">
+                        <button type="submit" data-mdb-ripple-duration="0"
+                            class="btn btn-primary btn-block mb-4 mt-4">Save TO Draft</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+<!-- MAIN -->
+{% endblock %}
+
+
+{% block start_evaluation %}
+<script type="text/javascript">
+
+
+    // Get the start date and end date inputs
+    const startDateInput = document.getElementById("start-date");
+    const endDateInput = document.getElementById("end-date");
+
+    // Set the minimum value for the start date input to today's date
+    startDateInput.min = new Date().toISOString().split("T")[0];
+
+    // Add an event listener to the start date input to update the minimum value of the end date input
+    startDateInput.addEventListener("change", function () {
+        endDateInput.min = startDateInput.value;
+    });
+
+    // Add an event listener to the end date input to update the maximum value of the start date input
+    endDateInput.addEventListener("change", function () {
+        startDateInput.max = endDateInput.value;
+    });
+
+
+
+
+
+
+    const studentCheckbox = document.querySelector("#stakeholder-student");
+    const studentFactors = document.querySelector(".student-factors");
+    const student_checkboxs = document.getElementsByClassName("student-checkbox");
+
+    studentCheckbox.addEventListener("click", function () {
+        studentFactors.classList.toggle("evaluation-form-div-show");
+
+        if (studentCheckbox.checked) {
+            for (let i = 0; i < student_checkboxs.length; i++) {
+                student_checkboxs[i].disabled = false;
+            }
+        } else {
+            for (let i = 0; i < student_checkboxs.length; i++) {
+                student_checkboxs[i].checked = false;
+                student_checkboxs[i].disabled = true;
+            }
+        }
+    });
+
+    const teacherCheckbox = document.querySelector("#stakeholder-teacher");
+    const teacherFactors = document.querySelector(".teacher-factors");
+    const teacher_checkboxs = document.getElementsByClassName("teacher-checkbox");
+
+
+    teacherCheckbox.addEventListener("click", function () {
+        teacherFactors.classList.toggle("evaluation-form-div-show");
+        if (teacherCheckbox.checked) {
+            for (let i = 0; i < teacher_checkboxs.length; i++) {
+                teacher_checkboxs[i].disabled = false;
+            }
+        } else {
+            for (let i = 0; i < teacher_checkboxs.length; i++) {
+                teacher_checkboxs[i].checked = false;
+                teacher_checkboxs[i].disabled = true;
+            }
+        }
+    });
+
+    const parentCheckbox = document.querySelector("#stakeholder-parent");
+    const parentFactors = document.querySelector(".parent-factors");
+    const parent_checkboxs = document.getElementsByClassName("parent-checkbox");
+
+    parentCheckbox.addEventListener("click", function () {
+        parentFactors.classList.toggle("evaluation-form-div-show");
+
+        if (parentCheckbox.checked) {
+            for (let i = 0; i < parent_checkboxs.length; i++) {
+                parent_checkboxs[i].disabled = false;
+            }
+        } else {
+            for (let i = 0; i < parent_checkboxs.length; i++) {
+                parent_checkboxs[i].checked = false;
+                parent_checkboxs[i].disabled = true;
+            }
+        }
+    });
+
+    const selfCheckbox = document.querySelector("#stakeholder-self");
+    const selfFactors = document.querySelector(".self-factors");
+    const self_checkboxs = document.getElementsByClassName("self-checkbox");
+
+    selfCheckbox.addEventListener("click", function () {
+        selfFactors.classList.toggle("evaluation-form-div-show");
+
+        if (selfCheckbox.checked) {
+            for (let i = 0; i < self_checkboxs.length; i++) {
+                self_checkboxs[i].disabled = false;
+            }
+        } else {
+            for (let i = 0; i < self_checkboxs.length; i++) {
+                self_checkboxs[i].checked = false;
+                self_checkboxs[i].disabled = true;
+            }
+        }
+    });
+
+    const administratorCheckbox = document.querySelector(
+        "#stakeholder-adminstrator"
+    );
+    const administratorFactors = document.querySelector(".adminstrator-factors");
+    const administrator_checkboxs = document.getElementsByClassName("administrator-checkbox");
+
+    administratorCheckbox.addEventListener("click", function () {
+        administratorFactors.classList.toggle("evaluation-form-div-show");
+
+        if (administratorCheckbox.checked) {
+            for (let i = 0; i < administrator_checkboxs.length; i++) {
+                administrator_checkboxs[i].disabled = false;
+            }
+        } else {
+            for (let i = 0; i < administrator_checkboxs.length; i++) {
+                administrator_checkboxs[i].checked = false;
+                administrator_checkboxs[i].disabled = true;
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        $(":checkbox:checked").prop("checked", false);
+    });
+
+
+</script>
+{% endblock %}

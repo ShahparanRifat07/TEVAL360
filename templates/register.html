@@ -17,89 +17,103 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 </head>
+
 <body>
+
     <div class="contain-register">
         <div class="card">
-            <div class="card-body  form-padding">
-                <div class="signin-form-header">
-                    <p>Don't have an evaluation system? Don't worry register here...</p>
-                </div>
-                <hr>
-                <form method="POST" action="{% url 'stakeholder:register' %}">
-                    {% csrf_token %}
-                    <div class="row mb-3">
-                        <p class="mb-4 sigin-form-section-header">Institution Details:</p>
-                        <div class="col-6 mb-3">
-                            <label class="form-label">Institution Name <span class="star-color">*</span></label>
-                            <input type="text" name="institution_name" class="form-control" placeholder="Enter Institution Name " required/>
+            <div class="signin-form">
+                <div class="card-body  form-padding">
+                    <div class="signin-form-header">
+                        <p>Don't have an evaluation system? Don't worry register here...</p>
+                    </div>
+                    <hr>
+                    <form method="POST" action="{% url 'stakeholder:register' %}">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <p class="mb-4 sigin-form-section-header">Institution Details:</p>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Institution Name <span class="star-color">*</span></label>
+                                <input type="text" name="institution_name" class="form-control" placeholder="Enter Institution Name " required/>
+
+
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Institution Code <span class="star-color">*</span></label>
+                                <input type="text" name="institution_code" class="form-control" placeholder="Enter Institution Code" required/>
+
+
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Established Year <span class="star-color">*</span></label>
+                                <input type="text" name="established_year" class="form-control" placeholder="Enter Established Year" required/>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-outline">
+                                    <label class="form-label" >Institution Type <span class="star-color">*</span></label>
+                                    <select name="institution_type" class="form-select form-select" aria-label=".form-select-sm example" required>
+                                        <option selected disabled>Select Institution Type</option>
+                                        <option value="1">Primary</option>
+                                        <option value="2">Secondary</option>
+                                        <option value="3">Tertiary</option>
+                                        <option value="4">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Principal / Institution Head <span class="star-color">*</span></label>
+                                <input type="text" name="institution_head" class="form-control" placeholder="Enter Principal Name" required/>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Location</label>
+                                <input type="text" name="location" class="form-control" placeholder="Enter Institution Location"/>
+
+
+                            </div>
+
+                            
+
+                            
+
+
                         </div>
 
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Institution Code <span class="star-color">*</span></label>
-                            <input type="text" name="institution_code" class="form-control" placeholder="Enter Institution Code" required/>
-                        </div>
+                        <p class="mb-4 sigin-form-section-header">Your Details:</p>
+                        <div class="row mb-4">
 
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Full Name <span class="star-color">*</span></label>
+                                <input type="text" name="fullname" class="form-control" placeholder="Enter Your Full Name" required/>
+                            </div>
 
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Established Year <span class="star-color">*</span></label>
-                            <input type="text" name="established_year" class="form-control" placeholder="Enter Established Year" required/>
-                        </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Email <span class="star-color">*</span></label>
+                                <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required/>
+                            </div>
 
-                        <div class="col-6 mb-3">
-                            <div class="form-outline">
-                                <label class="form-label" >Institution Type <span class="star-color">*</span></label>
-                                <select name="institution_type" class="form-select form-select" aria-label=".form-select-sm example" required>
-                                    <option selected disabled>Select Institution Type</option>
-                                    <option value="1">Primary</option>
-                                    <option value="3">Secondary</option>
-                                    <option value="3">Tertiary</option>
-                                    <option value="4">Other</option>
-                                </select>
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Username <span class="star-color">*</span></label>
+                                <input type="text" name="username" class="form-control" placeholder="Enter Your Username" required/>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label class="form-label" >Password <span class="star-color">*</span></label>
+                                <input type="password" name="password" class="form-control" placeholder="Enter Your Password" required/>
                             </div>
                         </div>
 
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Principal / Institution Head <span class="star-color">*</span></label>
-                            <input type="text" name="institution_head" class="form-control" placeholder="Enter Principal Name" required/>
+                        <div class="student-submit">
+                            <button type="submit" data-mdb-ripple-duration="0" class="btn btn-primary btn-block">Submit</button>
                         </div>
-
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Location</label>
-                            <input type="text" name="location" class="form-control" placeholder="Enter Institution Location"/>
-                        </div>
-                    </div>
-
-
-                    <p class="mb-4 sigin-form-section-header">Your Details:</p>
-                    <div class="row mb-4">
-
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Full Name <span class="star-color">*</span></label>
-                            <input type="text" name="fullname" class="form-control" placeholder="Enter Your Full Name" required/>
-                        </div>
-
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Email <span class="star-color">*</span></label>
-                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required/>
-                        </div>
-
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Username <span class="star-color">*</span></label>
-                            <input type="text" name="username" class="form-control" placeholder="Enter Your Username" required/>
-                        </div>
-
-                        <div class="col-6 mb-3">
-                            <label class="form-label" >Password <span class="star-color">*</span></label>
-                            <input type="password" name="password" class="form-control" placeholder="Enter Your Password" required/>
-                        </div>
-                    </div>
-
-                    <div class="student-submit">
-                        <button type="submit" data-mdb-ripple-duration="0" class="btn btn-primary btn-block">Submit</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-            
             <div class="login-part">
                 <p class="login-part-head">Teachers' Performance Evaluation</p>
                 <hr>

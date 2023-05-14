@@ -1,4 +1,3 @@
-
 html {
     height: 100%
 }
@@ -32,6 +31,9 @@ li {
     list-style: none;
 }
 
+.text-color-purple {
+    color: var(--purple) !important;
+}
 
 .bg-color-purple {
     background: var(--purple);
@@ -42,9 +44,11 @@ li {
     color: var(--white);
 }
 
-.star-color{
+.star-color {
     color: var(--red);
 }
+
+
 
 
 /* SIDEBAR */
@@ -162,6 +166,13 @@ li {
 /* SIDEBAR */
 
 
+
+
+
+
+
+
+
 /* CONTENT */
 
 
@@ -176,7 +187,6 @@ li {
     width: calc(100% - 60px);
     left: 60px;
 }
-
 
 
 /* NAVBAR */
@@ -311,6 +321,9 @@ nav .profile .profile-link a:hover {
 /* NAVBAR */
 
 
+
+
+
 /* MAIN */
 main {
     width: 100%;
@@ -413,6 +426,17 @@ main .chart-data .card {
 /* CONTENT */
 
 
+
+
+
+
+
+
+
+
+
+
+
 /* ADD STUDENT */
 .add-student .card {
     padding: 30px;
@@ -447,6 +471,18 @@ main .chart-data .card {
 }
 
 /* ADD STUDENT */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -544,6 +580,17 @@ main .chart-data .card {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /*ADD Administrative Role*/
 
 .permission-checkbox input {
@@ -555,6 +602,7 @@ main .chart-data .card {
 
 
 
+
 /* Student List  */
 .student-list-edit:hover {
     background-color: var(--purple) !important;
@@ -562,6 +610,7 @@ main .chart-data .card {
 }
 
 /* Student List  */
+
 
 
 /* Factor List */
@@ -590,6 +639,9 @@ main .chart-data .card {
 }
 
 /* Factor List */
+
+
+
 
 
 /* Create Evaluation */
@@ -651,6 +703,9 @@ main .chart-data .card {
 }
 
 /* Create Evaluation */
+
+
+
 
 
 /* Evaluation Form */
@@ -727,6 +782,8 @@ main .chart-data .card {
 
 
 /* Add Factor Question */
+
+
 
 
 /* login page */
@@ -806,6 +863,8 @@ main .chart-data .card {
 
 /* login page */
 
+
+
 /* Register Page */
 
 .contain-register {
@@ -829,7 +888,7 @@ main .chart-data .card {
     display: flex;
     flex-direction: row;
     background: var(--purple);
-    
+
 }
 
 .contain-register .card .signin-form {
@@ -846,7 +905,7 @@ main .chart-data .card {
     /* display: flex;
     flex-direction: column; */
     width: 80%;
-    
+
 }
 
 .contain-register .card .signin-form .form-padding label {
@@ -896,6 +955,28 @@ main .chart-data .card {
 
 /* Admin Dashboard */
 
+.floating-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Style the close button */
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: red;
+}
+
+
 .admin-dashboard-head-stat {
     font-weight: 400 !important;
     color: var(--dark);
@@ -934,23 +1015,25 @@ main .chart-data .card {
 }
 
 
-.chart-data-admin .card .user-activity-card-header{
+.chart-data-admin .card .user-activity-card-header {
     display: flex;
     justify-content: space-between;
     padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
 }
-.chart-data-admin .card .user-activity-card-header p{
+
+.chart-data-admin .card .user-activity-card-header p {
     font-weight: 700;
     color: var(--dark);
     font-size: large;
 }
-.all-user-activity-cards{
-    overflow-y:auto
+
+.all-user-activity-cards {
+    overflow-y: auto
 }
 
-.user-activity-card{
+.user-activity-card {
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -958,12 +1041,12 @@ main .chart-data .card {
     /* border: 1px solid red; */
 }
 
-.user-activity-card .first-part{
+.user-activity-card .first-part {
     display: flex;
     align-items: center;
 }
 
-.user-activity-card .first-part .user-activity-card-image{
+.user-activity-card .first-part .user-activity-card-image {
     background: #EDF4FF;
     border-radius: 5px;
     padding: 5px;
@@ -972,39 +1055,83 @@ main .chart-data .card {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
+
 }
-.user-activity-card .first-part .user-activity-card-image i{
+
+.user-activity-card .first-part .user-activity-card-image i {
     font-size: larger;
     color: var(--purple);
 }
 
-.user-activity-card .first-part .user-activity-card-detail{
+.user-activity-card .first-part .user-activity-card-detail {
     margin-left: 10px;
 }
-.user-activity-card .first-part .user-activity-card-detail p{
+
+.user-activity-card .first-part .user-activity-card-detail p {
     margin: 0;
     padding: 0;
 }
-.user-activity-card .first-part .user-activity-card-detail .header{
+
+.user-activity-card .first-part .user-activity-card-detail .header {
     font-size: 15px;
     font-weight: 500;
     color: var(--dark);
 }
-.user-activity-card .first-part .user-activity-card-detail .subheader{
+
+.user-activity-card .first-part .user-activity-card-detail .subheader {
     font-size: small;
     color: var(--dark-gray);
 }
 
-.user-activity-card .time{
+.user-activity-card .time {
     background: #FFF9ED;
     padding: 5px;
     border-radius: 12px;
 }
 
-.user-activity-card .time  p{
+.user-activity-card .time p {
     margin: 0;
     padding: 0;
     font-size: 12px;
 }
+
 /* Admin Dashboard */
+
+/*colleague evaluation*/
+
+.colleague-notice{
+    margin: auto;
+    color: var(--light-red);
+}
+
+.colleague-remaining{
+    margin: auto;
+}
+
+
+/*colleague evaluation*/
+
+
+
+/* current evaluation report */
+.report-stakehoder{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    /* background-color: #03A9F4; */
+}
+
+.report-stakehoder:hover{
+    background-color: #03A9F4;
+    transition: all 0.3s ease;
+    color: white;
+}
+ 
+/* .report-stakehoder h5 {
+    color: white;
+}
+.report-stakehoder i{
+    color: white;
+} */
+/* current evaluation report */

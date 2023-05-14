@@ -4,30 +4,32 @@
 
 <!-- MAIN -->
 <main>
-    <h1 class="title">Departments</h1>
+    <h1 class="title">Administarators</h1>
     <ul class="breadcrumbs">
-        <li><a href="{% url 'stakeholder:dashboard' %}">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li class="divider">/</li>
-        <li><a href="{% url 'stakeholder:department-list' %}" class="active">Departments</a></li>
+        <li><a href="" class="active">Administarator List</a></li>
     </ul>
 
 
-    <div class="search-list mb-4">
+    <div class="search-list mst-4">
         <form action="" method="POST">
-            <div class="row mb-3">
-                <div class="col-5">
+            <div class="row mb-4">
+                <div class="col-3">
                     <div class="form-outline bg-white">
-                        <input type="text" id="form6Example1" class="form-control"
-                            placeholder="Search by Departemnt ID ..." />
+                        <input type="text" id="form6Example1" class="form-control" placeholder="Search by ID ..." />
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-4">
                     <div class="form-outline bg-white">
-                        <input type="text" id="form6Example2" class="form-control"
-                            placeholder="Search by Departemnt Name ..." />
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Name ..." />
                     </div>
                 </div>
-
+                <div class="col-3">
+                    <div class="form-outline bg-white">
+                        <input type="text" id="form6Example2" class="form-control" placeholder="Search by Phone ..." />
+                    </div>
+                </div>
                 <div class="col-2">
                     <!-- Submit button -->
                     <!-- <div class="student-submit"> -->
@@ -43,12 +45,12 @@
     <div class="add-student">
         <div class="card">
             <div class="add-student-head">
-                <h4 class="text-dark">Departments</h4>
+                <h4 class="text-dark">Administarators</h4>
 
                 <div>
                     <a href="" class="btn btn-primary bg-color-purple"><i class="fa-solid fa-download"></i>
                         Download</a>
-                    <a href="{% url 'stakeholder:add-department' %}" class="btn btn-primary ms-2 bg-color-purple"><i
+                    <a href="{% url 'stakeholder:add-administrator' %}" class="btn btn-primary ms-2 bg-color-purple"><i
                             class="fa-solid fa-plus"></i></a>
                 </div>
             </div>
@@ -58,28 +60,44 @@
                     <thead class="bg-light">
                         <tr>
                             <th>#</th>
-                            <th>Department ID</th>
-                            <th>Department Name</th>
-                            <th>Department Head</th>
+                            <th>Name</th>
+                            <th>Administrator ID</th>
+                            <th>Role</th>
+                            <th>Phone Number</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
 
 
-                        {% for department in departments%}
+
+                        {% for admin in administrators%}
                         <tr>
                             <td>{{forloop.counter}}</td>
-                            <td>{{department.pk}}</td>
-                            <td>{{department.name}}</td>
-                            <td>{{department.dept_head}}</td>
+
                             <td>
-                                <a href="" class="btn btn-rounded student-list-edit"><i class="fa-solid fa-eye"></i></a>
+                                <div class="d-flex align-items-center">
+                                    <img src="/media/{{admin.image}}" alt="{{admin.first_name}} {{admin.last_name}}"
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <a href="" class="fw-bold mb-1">{{admin.first_name}} {{admin.last_name}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{admin.administrative_id}}</td>
+                            <td>{{admin.role}}</td>
+                            <td>
+                                {{admin.phone}}
+                            </td>
+                            <td>
                                 <a href="" class="btn btn-rounded student-list-edit"><i
                                         class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="" class="btn btn-rounded bg-danger text-white"><i
+                                        class="fa-regular fa-trash-can"></i></a>
                             </td>
                         </tr>
                         {% endfor %}
+
 
 
 
@@ -106,5 +124,4 @@
     </div>
 
 </main>
-
 {% endblock %}

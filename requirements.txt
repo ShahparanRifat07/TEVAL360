@@ -9,11 +9,14 @@ MarkupPy==1.14
 nameparser==1.1.2
 odfpy==1.4.1
 openpyxl==3.1.1
+packaging==23.1
 Pillow==9.4.0
+plotly==5.14.1
 pycodestyle==2.10.0
 PyYAML==6.0
 sqlparse==0.4.3
 tablib==3.3.0
+tenacity==8.2.2
 tomli==2.0.1
 tzdata==2022.7
 xlrd==2.0.1

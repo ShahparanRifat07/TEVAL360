@@ -321,6 +321,9 @@ chart.render();
 
 
 //admin dashboard
+function closeFloatingDiv() {
+  document.getElementById('floating-div').style.display = 'none';
+}
 
 var options = {
   series: [76, 90, 61, 90, 60],
@@ -431,138 +434,13 @@ var options = {
 var chart = new ApexCharts(document.querySelector("#chart-admin-2"), options);
 chart.render();
 
+//search student
 
 
 
 
 
-//Create Evaluation
-$('#datepicker').daterangepicker({
-  locale: {
-           format: 'DD/MM/YYYY'
-           }
-});
 
-$(function () {
-  var dtToday = new Date();
 
-  var month = dtToday.getMonth() + 1;
-  var day = dtToday.getDate();
-  var year = dtToday.getFullYear();
-  if (month < 10) month = "0" + month.toString();
-  if (day < 10) day = "0" + day.toString();
 
-  var maxDate = year + "-" + month + "-" + day;
-  // alert(maxDate);
-  $("#start_date").attr("min", maxDate);
-  $("#end_date").attr("min", maxDate);
-
-  $("#start_date").on("change", function () {
-    $("#end_date").attr("min", $(this).val());
-  });
-
-  $("#end_date").on("change", function () {
-    $("#start_date").attr("max", $(this).val());
-  });
-});
-
-const studentCheckbox = document.querySelector("#stakeholder-student");
-const studentFactors = document.querySelector(".student-factors");
-
-studentCheckbox.addEventListener("click", function () {
-  studentFactors.classList.toggle("evaluation-form-div-show");
-});
-
-const teacherCheckbox = document.querySelector("#stakeholder-teacher");
-const teacherFactors = document.querySelector(".teacher-factors");
-
-teacherCheckbox.addEventListener("click", function () {
-  teacherFactors.classList.toggle("evaluation-form-div-show");
-});
-
-const parentCheckbox = document.querySelector("#stakeholder-parent");
-const parentFactors = document.querySelector(".parent-factors");
-
-parentCheckbox.addEventListener("click", function () {
-  parentFactors.classList.toggle("evaluation-form-div-show");
-});
-
-const selfCheckbox = document.querySelector("#stakeholder-self");
-const selfFactors = document.querySelector(".self-factors");
-
-selfCheckbox.addEventListener("click", function () {
-  selfFactors.classList.toggle("evaluation-form-div-show");
-});
-
-const administratorCheckbox = document.querySelector(
-  "#stakeholder-adminstrator"
-);
-const administratorFactors = document.querySelector(".adminstrator-factors");
-
-administratorCheckbox.addEventListener("click", function () {
-  administratorFactors.classList.toggle("evaluation-form-div-show");
-});
-
-$(document).ready(function () {
-  $(":checkbox:checked").prop("checked", false);
-});
-
-//add student using excel
-// $(function () {
-//   function formatBytes(a, b) {
-//     if (0 == a) return "0 Bytes";
-//     var c = 1024,
-//       d = b || 2,
-//       e = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
-//       f = Math.floor(Math.log(a) / Math.log(c));
-//     return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f];
-//   }
-
-//   $("#dropzone").on("dragover", function () {
-//     $(this).addClass("dragover");
-//   });
-
-//   $("#dropzone").on("dragleave", function () {
-//     $(this).removeClass("dragover");
-//   });
-//   $("#dropzone input").on("change", function (e) {
-//     $("#dropzone").removeClass("dragover");
-//     var file = this.files[0],
-//       fileExt,
-//       fileType,
-//       keepFile;
-//     if ($(file).length === 0) {
-//       var ext = "Drag your file to upload";
-//     } else if (
-//       ~file.type.lastIndexOf("xlsx") ||
-//       ~file.type.lastIndexOf("xls")
-//     ) {
-//       const basicTruncate = (str, strLgth = 19) => {
-//         const truncStr = str.substring(0, strLgth);
-//         return str.length > strLgth ? `${truncStr}...${fileExt}` : str;
-//       };
-//       var fileExt = file.name.split(".").pop(),
-//         fileType = fileExt == "xlsx" ? "xlsx" : "xlsx",
-//         fileName = "<div class=fileok>" + basicTruncate(file.name) + "</div>",
-//         open_in =
-//           '<svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#000000" d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>',
-//         icon = "<div class=" + fileType + ">" + fileExt + "</div>",
-//         fileSize = "<div class=filesize>[" + formatBytes(file.size) + "]</div>";
-//       ext = icon + "<div>" + fileName + fileSize + "</div>";
-//     } else {
-//       var ext = "Invalid file format";
-//       e.target.value = "";
-//     }
-//     $("#dropzone div").html(ext);
-//     // if (~file.type.indexOf('image')) {
-//     //   var reader = new FileReader(file);
-//     //   reader.readAsDataURL(file);
-//     //   // reader.onload = function(e) {
-//     //   //   var data = e.target.result,
-//     //   //       $img = $('<img />').attr('src', data).fadeIn();
-//     //   //   $('#dropzone div').html($img);
-//     //   // };
-//     // }
-//   });
-// });
 

@@ -11,14 +11,19 @@ GENDER_CHOICE = (
     ("3", "Others"),
 )
 
-
+INSTITUTION_TYPE = (
+    ("1","Primary"),
+    ("2","Secondary"),
+    ("3","Tertiary"),
+    ("4","Other"),
+)
 
 
 class Institution(models.Model):
     institution_name = models.CharField(max_length=128)
     institution_code = models.CharField(max_length=11)
     established_year = models.CharField(max_length=4)
-    institution_type = models.PositiveIntegerField()
+    institution_type = models.CharField(max_length = 1, choices = INSTITUTION_TYPE)
     institution_head = models.CharField(max_length=64)
     location = models.CharField(max_length=128)
     institution_admin = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -108,6 +113,7 @@ class Parent(models.Model):
     phone_number = models.CharField(max_length=11)
     student = models.OneToOneField(Student,on_delete=models.CASCADE)
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='Profile_Picture', default='default.jpg')
 
     def __str__(self):
         return self.user.username
@@ -146,6 +152,68 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.first_name+" "+self.last_name
+    
 
+class Administrator(models.Model):
+    first_name = models.CharField(max_length=64,null=True,blank=True)
+    last_name = models.CharField(max_length=64,null=True,blank=True)
+    administrative_id = models.CharField(max_length=64,null=True,blank=True)
+    role = models.CharField(max_length=128,null=True,blank=True)
+    phone = models.CharField(max_length=15,null=True,blank=True)
+    institution = models.ForeignKey(Institution,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    image = models.ImageField(upload_to='Profile_Picture', default='default.jpg')
+
+    @property
+    def administrator_username(self):
+        return self._administrator_username
+    
+    @property
+    def administrator_password(self):
+        return self._administrator_password
+    
+    @property
+    def administrator_email(self):
+        return self._administrator_email
+    
+    @property
+    def add_teacher(self):
+        return self._add_teacher
+    
+    @property
+    def add_student(self):
+        return self._add_student
+    
+    @property
+    def add_course(self):
+        return self._add_course
+    
+    @property
+    def edit_teacher(self):
+        return self._edit_teacher
+    
+    @property
+    def edit_student(self):
+        return self._edit_student
+    
+    @property
+    def edit_course(self):
+        return self._edit_course
+    
+    def __str__(self):
+        return self.first_name+" "+self.last_name
+
+
+
+class Course(models.Model):
+    course_id = models.CharField(max_length=16)
+    course_name = models.CharField(max_length=128)
+    section = models.CharField(max_length=2)
+    course_teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL,null=True)
+    course_students = models.ManyToManyField(Student, related_name='course_students')
+    institution = models.ForeignKey(Institution,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.course_name
 
         

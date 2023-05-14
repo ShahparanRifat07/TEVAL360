@@ -24,7 +24,7 @@
                 <i class="fas fa-graduation-cap me-2"></i>Total Students
             </div>
 
-            <h2 class="title admin-dashboard-head-stat">220</h2>
+            <h2 class="title admin-dashboard-head-stat">{{student_number}}</h2>
 
         </div>
 
@@ -225,6 +225,15 @@
             </div>
         </div>
     </div>
+
+
+    {% if first_time == True %}
+    <div class="floating-div p-3" id="floating-div">
+		<h4 class="mt-4">Add Departments, Teachers, Students, Administrators before start the evaluation</h4>
+		<span class="close-button" onclick="closeFloatingDiv()"><i class="fa-regular fa-circle-xmark"></i></span>
+	</div>
+    {% endif %}
+
 </main>
 
 {% endblock %}
